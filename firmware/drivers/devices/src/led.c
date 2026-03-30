@@ -81,7 +81,7 @@ uint8_t LedOff(led_t led){
 	return result;
 }
 
-uint8_t LedToggle(led_t led){
+uint8_t LedToggle(led_t led){	// Si el led esta apagado, lo enciendo. Si el led esta encendido, lo apago
 	uint8_t result = false;
 
 	switch (led){
@@ -102,7 +102,7 @@ uint8_t LedToggle(led_t led){
 	return result;
 }
 
-uint8_t LedsOffAll(void){
+uint8_t LedsOffAll(void){ 	// Apago todos los leds
 	GPIOOff(GPIO_LED1);
 	GPIOOff(GPIO_LED2);
 	GPIOOff(GPIO_LED3);
@@ -110,7 +110,7 @@ uint8_t LedsOffAll(void){
 	return true;
 }
 
-uint8_t LedsMask(uint8_t mask){
+uint8_t LedsMask(uint8_t mask){	
 	GPIOState(GPIO_LED1, (mask & LED_1) >> 2);
 	GPIOState(GPIO_LED2, (mask & LED_2) >> 1);
 	GPIOState(GPIO_LED3, (mask & LED_3));

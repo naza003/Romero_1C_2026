@@ -39,14 +39,14 @@ typedef enum LEDs {
 
 /*==================[external functions declaration]=========================*/
 /**
- * @brief ESP-EDU LEDs initialization
+ * @brief ESP-EDU LEDs initialization               INICIALIZO EL LED
  * 
  * @return uint8_t 
  */
 uint8_t LedsInit(void);
 
 /**
- * @brief Turn on a specific LED
+ * @brief Turn on a specific LED                   PRENDO EL LED
  * 
  * @param led LED number
  * @return uint8_t false: if invalid LED number
@@ -54,7 +54,7 @@ uint8_t LedsInit(void);
 uint8_t LedOn(led_t led);
 
 /**
- * @brief Turn off a specific LED
+ * @brief Turn off a specific LED               APAGO EL LED
  * 
  * @param led LED number
  * @return uint8_t false: if invalid LED number 
@@ -62,7 +62,7 @@ uint8_t LedOn(led_t led);
 uint8_t LedOff(led_t led);
 
 /**
- * @brief Invert a specific LED state
+ * @brief Invert a specific LED state         INVIERTO EL ESTADO DEL LED
  * 
  * @param led LED number
  * @return uint8_t false: if invalid LED number 
@@ -70,14 +70,14 @@ uint8_t LedOff(led_t led);
 uint8_t LedToggle(led_t led);
 
 /**
- * @brief Turn off all LEDs
+ * @brief Turn off all LEDs               APAGO TODOS LOS LEDS
  * 
  * @return uint8_t 
  */
 uint8_t LedsOffAll(void);
 
 /**
- * @brief Turn on or off leds from a mask.
+ * @brief Turn on or off leds from a mask.         PRENDO O APAGO LOS LEDS SEGUN UNA MASCARA
  * 
  * @param mask (b0: LED_3, b1: LED_2, b2: LED_1)
  * @return uint8_t 

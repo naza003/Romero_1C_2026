@@ -36,14 +36,14 @@ typedef enum switches {
 
 /*==================[external functions declaration]=========================*/
 /**
- * @brief ESP-EDU switches initialization
+ * @brief ESP-EDU switches initialization    INICIALIZA LOS SWITCHES 
  * 
  * @return int8_t 
  */
 int8_t SwitchesInit(void);
 
 /**
- * @brief Read all the switches state.
+ * @brief Read all the switches state.      LEE EL ESTADO DE LOS SWITCHES
  * 
  * @return int8_t 0 if no key pressed, SWITCH_1, SWITCH_2 or (SWITCH_1 | SWITCH_2) in other case.
  */

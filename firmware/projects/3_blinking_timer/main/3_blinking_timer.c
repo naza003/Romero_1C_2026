@@ -46,7 +46,7 @@ void FuncTimerB(void* param){
 /**
  * @brief Tarea encargada de blinkear el LED_1
  */
-static void Led1Task(void *pvParameter){
+static void Led1Task(void *pvParameter){   
     while(true){
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);    /* La tarea espera en este punto hasta recibir una notificación */
         printf("LED_1 Toggle\n");
