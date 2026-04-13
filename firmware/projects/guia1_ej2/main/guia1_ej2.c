@@ -1,8 +1,11 @@
-/*! @mainpage Template
+/*! @mainpage GUIA 1 - EJERCICIO 2
  *
  * @section genDesc General Description
  *
- * This section describes how the program works.
+ * Modifique la aplicación 1_blinking_switch de manera de hacer titilar los leds 1 y 2 al 
+ * mantener presionada las teclas 1 y 2 correspondientemente. También se debe poder hacer titilar el
+ * led 3 al presionar simultáneamente las teclas 1 y 2
+ *
  *
  * <a href="https://drive.google.com/...">Operation Example</a>
  *
@@ -10,8 +13,9 @@
  *
  * |    Peripheral  |   ESP32   	|
  * |:--------------:|:--------------|
- * | 	PIN_X	 	| 	GPIO_X		|
- *
+ * | 	PIN_12	 	| 	GPIO_11		|
+ * | 	PIN_11	 	| 	GPIO_10 	|
+ * | 	PIN_5	 	| 	GPIO_5		|
  *
  * @section changelog Changelog
  *
@@ -33,19 +37,27 @@
 #include <switch.h>
 /*==================[macros and definitions]=================================*/
 
+/** @def delay_ms
+ * @brief Tiempo de retardo en milisegundos
+ */
+#define delay_ms 3000
+
+/** @brief Variable que guarda el estado del switch que se está leyendo */
+uint8_t teclas = 0;
+
 /*==================[internal data definition]===============================*/
 
 /*==================[internal functions declaration]=========================*/
 
 /*==================[external functions definition]==========================*/
 void app_main(void){
+
 	printf("Ejercicio 2 Guia 1\n");
 	LedsInit();
 	SwitchesInit();
-	const uint32_t delay_ms = 3000;
 
 	while(true){
-		uint8_t teclas = SwitchesRead();  // Defino la variable teclas y LEO EL ESTADO DE LOS SWITCHES
+		teclas = SwitchesRead();  
 		switch(teclas){
 			case SWITCH_1:
 				LedOn(LED_1);
