@@ -110,7 +110,7 @@ uint8_t LedsOffAll(void){ 	// Apago todos los leds
 	return true;
 }
 
-uint8_t LedsMask(uint8_t mask){	
+uint8_t LedsMask(uint8_t mask){	 
 	GPIOState(GPIO_LED1, (mask & LED_1) >> 2);
 	GPIOState(GPIO_LED2, (mask & LED_2) >> 1);
 	GPIOState(GPIO_LED3, (mask & LED_3));

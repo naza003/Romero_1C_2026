@@ -51,7 +51,7 @@ bool LcdItsE0803Init(void){
 	return true;
 };
 
-bool LcdItsE0803Write(uint16_t value) {
+bool LcdItsE0803Write(uint16_t value) { 
 	uint8_t units, tens, hundreds;
 	if(value<1000)	 {
 		actual_value = value;
@@ -80,7 +80,7 @@ bool LcdItsE0803Write(uint16_t value) {
 		return false; /* return 0 for values higher than 999 */
 }
 
-uint16_t LcdItsE0803Read(void){
+uint16_t LcdItsE0803Read(void){ 
 	return (actual_value);
 }
 
