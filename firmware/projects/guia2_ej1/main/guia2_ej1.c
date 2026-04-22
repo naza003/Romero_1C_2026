@@ -32,6 +32,7 @@
  * |   Date	    | Description                                    |
  * |:----------:|:-----------------------------------------------|
  * | 15/04/2026 | Document creation		                         |
+ * | 22/4/2026  | Agregué el auxiliar ultima_distancia           |
  *
  * @author Nazarena Romero (romeronaza030@gmail.com)
  *
@@ -68,6 +69,15 @@ bool medir_distancia = false;
  */
 bool hold = false;
 
+/** @brief Variable que guarda la distancia medida en cm
+*/
+uint16_t distancia = 0;
+
+/** @brief Variable que guarda la ultima distancia medida en cm, para utilizar cuando hold == true, o 
+ * en el caso de que  * ocurra la situación medir_distancia == false pero hold == true
+ */
+uint16_t ultima_distancia = 0;
+
 /*==================[internal data definition]===============================*/
 TaskHandle_t MedirEncender_task_handle = NULL;
 TaskHandle_t LeerTeclas_task_handle = NULL;
@@ -79,6 +89,12 @@ TaskHandle_t LeerTeclas_task_handle = NULL;
  * @param [in] distancia_ distancia medida por el sensor de ultrasonido en cm.
  */
 void ActivarLedsSegunDistancia(uint16_t distancia_){
+
+/** Se apagan todos los LEDs al inicio para evitar estados residuales de iteraciones anteriores, 
+ * y luego se encienden únicamente los correspondientes al rango actual de distancia. */
+
+    LedsOffAll(); //Para asegurarme de que no haya leds que previamente ya estaban prendidos
+                // y en ese caso el primer if (<10) no haría nada porque los leds ya están apagados
 
     if (distancia_<10) {
         LedsOffAll();
@@ -111,14 +127,17 @@ void ActivarLedsSegunDistancia(uint16_t distancia_){
 static void MedirEncender(void *pvParameter){
     while(true){
         
-        uint16_t distancia = HcSr04ReadDistanceInCentimeters();
-
         if(medir_distancia==true){
+
+            distancia = HcSr04ReadDistanceInCentimeters();
+            ultima_distancia = distancia;      
             ActivarLedsSegunDistancia(distancia);
+
         }
 
-        if(hold==true){
-            LcdItsE0803Write(distancia);
+        if(hold==true){                     // mostrar el último valor, aunque deje de medir
+            
+            LcdItsE0803Write(ultima_distancia);
         }
  
         vTaskDelay(Retardo_tarea1 / portTICK_PERIOD_MS);
