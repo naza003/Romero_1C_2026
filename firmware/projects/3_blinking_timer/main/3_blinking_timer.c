@@ -76,6 +76,7 @@ void app_main(void){
         .param_p = NULL
     };
     TimerInit(&timer_led_1);
+
     timer_config_t timer_led_2 = {
         .timer = TIMER_B,
         .period = CONFIG_BLINK_PERIOD_LED_2_US,
@@ -83,9 +84,11 @@ void app_main(void){
         .param_p = NULL
     };
     TimerInit(&timer_led_2);
+
     /* Creación de tareas */
     xTaskCreate(&Led1Task, "LED_1", 512, NULL, 5, &led1_task_handle);
     xTaskCreate(&Led2Task, "LED_2", 512, NULL, 5, &led2_task_handle);
+    
     /* Inicialización del conteo de timers */
     TimerStart(timer_led_1.timer);
     TimerStart(timer_led_2.timer);
