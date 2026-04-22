@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tasks_0',['Ejemplo blinking tasks',['../dir_a76edacacd42953d38d01797b0e2044f.html#autotoc_md0',1,'']]]
+  ['tasks_0',['Ejemplo blinking tasks',['../C:/RepositoriosProgramable/Romero_1C_2026/firmware/projects/guia2_ej1/README.md#autotoc_md0',1,'']]]
 ];

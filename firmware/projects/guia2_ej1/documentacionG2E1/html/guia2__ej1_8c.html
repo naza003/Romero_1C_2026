@@ -5,8 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Proyecto2_ElectrónicaProgramable: Referencia del archivo C:/repositorio/Romero_1C_2026/firmware/projects/guia2_ej1/main/guia2_ej1.c</title>
-<link rel="icon" href="icon.ico" type="image/x-icon" />
+<title>Proyecto2_ElectrónicaProgramable: Referencia del archivo C:/RepositoriosProgramable/Romero_1C_2026/firmware/projects/guia2_ej1/main/guia2_ej1.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +28,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="fiuner.png"/></td>
   <td id="projectalign">
    <div id="projectname">Proyecto2_ElectrónicaProgramable<span id="projectnumber">&#160;1.0</span>
    </div>
@@ -104,10 +102,10 @@ $(function(){initNavTree('guia2__ej1_8c.html','',''); });
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
 <code>#include &quot;freertos/task.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="led_8h_source.html">led.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="switch_8h_source.html">switch.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="lcditse0803_8h_source.html">lcditse0803.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="hc__sr04_8h_source.html">hc_sr04.h</a>&quot;</code><br />
+<code>#include &quot;led.h&quot;</code><br />
+<code>#include &quot;switch.h&quot;</code><br />
+<code>#include &quot;lcditse0803.h&quot;</code><br />
+<code>#include &quot;hc_sr04.h&quot;</code><br />
 </div>
 <p><a href="guia2__ej1_8c_source.html">Ir al código fuente de este archivo.</a></p>
 <table class="memberdecls">
@@ -128,8 +126,12 @@ Variables</h2></td></tr>
 <tr class="memdesc:a48bf764129a6176d1dca66768e2b7871"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable para controlar si hay que medir la distancia o no (activar o desactivar la medición).  <br /></td></tr>
 <tr class="memitem:af0129e079b57e897edf00f22cc25f3d4" id="r_af0129e079b57e897edf00f22cc25f3d4"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#af0129e079b57e897edf00f22cc25f3d4">hold</a> = false</td></tr>
 <tr class="memdesc:af0129e079b57e897edf00f22cc25f3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable para controlar el hold (mantener o no el resultado).  <br /></td></tr>
-<tr class="memitem:a9487c7551f7287a6927bcfbc03034502" id="r_a9487c7551f7287a6927bcfbc03034502"><td class="memItemLeft">TaskHandle_t&#160;</td><td class="memItemRight"><a class="el" href="#a9487c7551f7287a6927bcfbc03034502">MedirEncender_task_handle</a> = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
-<tr class="memitem:a2aa237921db0695403a153671bfa5b63" id="r_a2aa237921db0695403a153671bfa5b63"><td class="memItemLeft">TaskHandle_t&#160;</td><td class="memItemRight"><a class="el" href="#a2aa237921db0695403a153671bfa5b63">LeerTeclas_task_handle</a> = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
+<tr class="memitem:aec40b15ff3098bdb2425eb4dc9c11a18" id="r_aec40b15ff3098bdb2425eb4dc9c11a18"><td class="memItemLeft">uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#aec40b15ff3098bdb2425eb4dc9c11a18">distancia</a> = 0</td></tr>
+<tr class="memdesc:aec40b15ff3098bdb2425eb4dc9c11a18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable que guarda la distancia medida en cm.  <br /></td></tr>
+<tr class="memitem:a2509233f3b947d187c8a85e70930e671" id="r_a2509233f3b947d187c8a85e70930e671"><td class="memItemLeft">uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a2509233f3b947d187c8a85e70930e671">ultima_distancia</a> = 0</td></tr>
+<tr class="memdesc:a2509233f3b947d187c8a85e70930e671"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable que guarda la ultima distancia medida en cm, para utilizar cuando hold == true, o en el caso de que * ocurra la situación medir_distancia == false pero hold == true.  <br /></td></tr>
+<tr class="memitem:a9487c7551f7287a6927bcfbc03034502" id="r_a9487c7551f7287a6927bcfbc03034502"><td class="memItemLeft">TaskHandle_t&#160;</td><td class="memItemRight"><a class="el" href="#a9487c7551f7287a6927bcfbc03034502">MedirEncender_task_handle</a> = NULL</td></tr>
+<tr class="memitem:a2aa237921db0695403a153671bfa5b63" id="r_a2aa237921db0695403a153671bfa5b63"><td class="memItemLeft">TaskHandle_t&#160;</td><td class="memItemRight"><a class="el" href="#a2aa237921db0695403a153671bfa5b63">LeerTeclas_task_handle</a> = NULL</td></tr>
 </table>
 <a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentación de «define»</h2>
 <a id="a4a1635c6bd6e7feb040d9d362357c566" name="a4a1635c6bd6e7feb040d9d362357c566"></a>
@@ -146,7 +148,7 @@ Variables</h2></td></tr>
 
 <p>Variable para controlar el retardo de la tarea 1 (lectura de teclas) [ms]. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00056">56</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00057">57</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
 
 </div>
 </div>
@@ -162,7 +164,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00061">61</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00062">62</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
 
 </div>
 </div>
@@ -181,10 +183,9 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Se apagan todos los LEDs al inicio para evitar estados residuales de iteraciones anteriores, y luego se encienden únicamente los correspondientes al rango actual de distancia.</p>
 
-<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00081">81</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
-
-<p class="reference">Hace referencia a <a class="el" href="led_8h_source.html#l00034">LED_1</a>, <a class="el" href="led_8h_source.html#l00033">LED_2</a>, <a class="el" href="led_8h_source.html#l00032">LED_3</a>, <a class="el" href="led_8c_source.html#l00046">LedOn()</a> y <a class="el" href="led_8c_source.html#l00105">LedsOffAll()</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00091">91</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
 
 </div>
 </div>
@@ -203,13 +204,31 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00157">157</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00176">176</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="gpio__mcu_8h_source.html#l00054">GPIO_2</a>, <a class="el" href="gpio__mcu_8h_source.html#l00055">GPIO_3</a>, <a class="el" href="hc__sr04_8c_source.html#l00034">HcSr04Init()</a>, <a class="el" href="lcditse0803_8c_source.html#l00037">LcdItsE0803Init()</a>, <a class="el" href="led_8c_source.html#l00031">LedsInit()</a>, <a class="el" href="guia2__ej1_8c_source.html#l00073">LeerTeclas_task_handle</a>, <a class="el" href="guia2__ej1_8c_source.html#l00072">MedirEncender_task_handle</a>, <a class="el" href="ili9341_8c_source.html#l00019">NULL</a> y <a class="el" href="switch_8c_source.html#l00029">SwitchesInit()</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="guia2__ej1_8c_source.html#l00083">LeerTeclas_task_handle</a> y <a class="el" href="guia2__ej1_8c_source.html#l00082">MedirEncender_task_handle</a>.</p>
 
 </div>
 </div>
 <a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentación de variables</h2>
+<a id="aec40b15ff3098bdb2425eb4dc9c11a18" name="aec40b15ff3098bdb2425eb4dc9c11a18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec40b15ff3098bdb2425eb4dc9c11a18">&#9670;&#160;</a></span>distancia</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t distancia = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variable que guarda la distancia medida en cm. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00074">74</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
+
+</div>
+</div>
 <a id="af0129e079b57e897edf00f22cc25f3d4" name="af0129e079b57e897edf00f22cc25f3d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af0129e079b57e897edf00f22cc25f3d4">&#9670;&#160;</a></span>hold</h2>
 
@@ -224,7 +243,7 @@ Variables</h2></td></tr>
 
 <p>Variable para controlar el hold (mantener o no el resultado). </p>
 
-<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00069">69</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00070">70</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
 
 </div>
 </div>
@@ -235,14 +254,14 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TaskHandle_t LeerTeclas_task_handle = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
+          <td class="memname">TaskHandle_t LeerTeclas_task_handle = NULL</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00073">73</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00083">83</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="guia2__ej1_8c_source.html#l00157">app_main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="guia2__ej1_8c_source.html#l00176">app_main()</a>.</p>
 
 </div>
 </div>
@@ -260,7 +279,7 @@ Variables</h2></td></tr>
 
 <p>Variable para controlar si hay que medir la distancia o no (activar o desactivar la medición). </p>
 
-<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00065">65</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00066">66</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
 
 </div>
 </div>
@@ -271,14 +290,32 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TaskHandle_t MedirEncender_task_handle = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
+          <td class="memname">TaskHandle_t MedirEncender_task_handle = NULL</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00072">72</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00082">82</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="guia2__ej1_8c_source.html#l00157">app_main()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="guia2__ej1_8c_source.html#l00176">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="a2509233f3b947d187c8a85e70930e671" name="a2509233f3b947d187c8a85e70930e671"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2509233f3b947d187c8a85e70930e671">&#9670;&#160;</a></span>ultima_distancia</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ultima_distancia = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variable que guarda la ultima distancia medida en cm, para utilizar cuando hold == true, o en el caso de que * ocurra la situación medir_distancia == false pero hold == true. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="guia2__ej1_8c_source.html#l00079">79</a> del archivo <a class="el" href="guia2__ej1_8c_source.html">guia2_ej1.c</a>.</p>
 
 </div>
 </div>
@@ -295,7 +332,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html">firmware</a></li><li class="navelem"><a href="dir_429d80758da54da73083af4edd40d0b3.html">projects</a></li><li class="navelem"><a href="dir_a76edacacd42953d38d01797b0e2044f.html">guia2_ej1</a></li><li class="navelem"><a href="dir_8d36ede6dc7dc4ace1bb805864d9d528.html">main</a></li><li class="navelem"><a href="guia2__ej1_8c.html">guia2_ej1.c</a></li>
+    <li class="navelem"><a href="dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a href="guia2__ej1_8c.html">guia2_ej1.c</a></li>
     <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>
