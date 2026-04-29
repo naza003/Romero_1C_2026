@@ -29,13 +29,13 @@
 
 /*==================[macros and definitions]=================================*/
 
-/** @def Retardo_tarea1
- * @brief Variable para controlar el retardo de la tarea 1 (lectura de teclas) [ms]
+/** @def timer_tarea1US
+ * @brief Variable para controlar el timer de la tarea 1 (lectura de teclas) [us]
  */
-#define Retardo_tarea1 1000
+#define timer_tarea1US 1000000
 
 /** @brief Variable para controlar si hay que medir la distancia o no (activar o desactivar la medición). 
- * Además esta variable define el estado inicial del sistema, que es no medir la distancia.
+ * Además esta variable define el estado inicial del sistema, que es medir la distancia.
  */
 bool medir_distancia = true;
 
@@ -54,8 +54,7 @@ uint16_t distancia = 0;
 uint16_t ultima_distancia = 0;
 
 /*==================[internal data definition]===============================*/
-TaskHandle_t MedirEncender_task_handle = NULL;
-
+TaskHandle_t MedirEncenderMostrar_task_handle = NULL;
 
 /*==================[internal functions declaration]=========================*/
 
@@ -74,11 +73,12 @@ void switch2_interrupcion (void* param){
 }
 
 /**
- * @brief Función invocada en la interrupción del timer A
+ * @brief Función invocada en la interrupción del timer, que envía una notificación a la tarea 1
+ *  y que esta pueda o no medir la distancia y actualizar los leds y el display LCD.
  */
-//void FuncTimerA(void* param){
-//    vTaskNotifyGiveFromISR(MedirEncender_task_handle, pdFALSE);    /* Envía una notificación a la tarea 1 */
-//}
+void TimerInterrupcion(void* param){
+    vTaskNotifyGiveFromISR(MedirEncenderMostrar_task_handle, pdFALSE);    /* Envía una notificación a la tarea 1 para interrumpirla */
+}
 
 /** @fn ActivarLedsSegunDistancia(void)
  * @brief Función que mide la distancia con el sensor de ultrasonido y activa los leds según la distancia medida.
@@ -111,7 +111,7 @@ void ActivarLedsSegunDistancia(uint16_t distancia_){
     }
 }
 
-/** @fn static void MedirEncender(void *pvParameter)
+/** @fn static void MedirEncenderMostrar(void *pvParameter)
  * @brief funcion que decide si medir o no la distancia, dependiendo del estado de medir_distancia. Si mide la 
  * distancia entonces llama a la función que activa los leds.
  * Esta función también decide si se muestra o no la distancia medida en el display LCD, dependiendo del 
@@ -121,6 +121,8 @@ void ActivarLedsSegunDistancia(uint16_t distancia_){
 static void MedirEncenderMostrar(void *pvParameter){
     while(true){
         
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);    /* La tarea espera en este punto hasta recibir una notificación */
+
         if(medir_distancia==true){
 
             distancia = HcSr04ReadDistanceInCentimeters();
@@ -130,11 +132,8 @@ static void MedirEncenderMostrar(void *pvParameter){
         }
 
         if(hold==true){                     // mostrar el último valor, aunque deje de medir
-            
             LcdItsE0803Write(ultima_distancia);
         }
- 
-        vTaskDelay(Retardo_tarea1 / portTICK_PERIOD_MS);
     }
 }
 
@@ -148,23 +147,22 @@ void app_main(void){
     HcSr04Init(GPIO_3, GPIO_2); //GPIO_3 es el echo y GPIO_2 es el trigger
 
     /* Inicialización de timers */
-//    timer_config_t timer_1 = {
-//        .timer = TIMER_A, 
-//        .period = CONFIG_BLINK_PERIOD_LED_1_US, 
-//        .func_p = FuncTimerA, 
-//        .param_p = NULL
-//    };
+    timer_config_t timer_1 = {
+        .timer = TIMER_A, 
+        .period = timer_tarea1US, 
+        .func_p = TimerInterrupcion, 
+        .param_p = NULL
+    };
 
-//    TimerInit(&timer_1);
-
-    /* Inicialización del conteo de timers */
-//    TimerStart(timer_1.timer);   
+    TimerInit(&timer_1);
 
     /* Creación de tareas */
-    xTaskCreate(&MedirEncenderMostrar, "Tarea 1", 512, NULL, 5, &MedirEncender_task_handle);
+    xTaskCreate(&MedirEncenderMostrar, "Tarea 1", 512, NULL, 5, &MedirEncenderMostrar_task_handle);
 
     /* Interrupciones por switch*/
     SwitchActivInt(SWITCH_1, switch1_interrupcion, NULL);
     SwitchActivInt(SWITCH_2, switch2_interrupcion, NULL);
 
+    /* Inicialización del conteo de timers */
+    TimerStart(timer_1.timer);
 }
