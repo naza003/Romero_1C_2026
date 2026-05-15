@@ -146,6 +146,29 @@ static void MedirEncenderMostrar(void *pvParameter){
     }
 }
 
+/** @fn UartRecibir(void* param)
+ * @brief funcion que decide si medir o no la distancia, si se preciona la tecla 'O' y decide si activar o desactivar
+ * el hold si se preciona la tecla 'H'. Esta función es llamada cada vez que se recibe un byte por UART, 
+ * y el byte recibido es pasado a esta función.
+ * @param [in] param puntero a void que se pasa a la función al configurar la interrupción por UART, no se utiliza en este caso.
+ */
+
+void UartRecibir (void* param){
+
+    uint8_t tecla = 0;  /* Variable para almacenar la tecla recibida por UART */
+    UartReadByte(UART_PC, &tecla);  /* Lee un byte desde puerto UART_PC, y lo guarda en la direccion de memoria de la variable tecla */
+
+    switch (tecla){
+        case 'O':
+            medir_distancia =! medir_distancia;   /* Cambia el estado de medir_distancia */
+        break;
+
+        case 'H':
+            hold =! hold;                       /* Cambia el estado del hold */
+        break;
+    }
+
+}
 
 /*==================[external functions definition]==========================*/
 void app_main(void){
@@ -159,8 +182,8 @@ void app_main(void){
     /* Inicalización de los uart */
     serial_config_t configuracion_uart = {
         .port = UART_PC, 
-        .baud_rate = 115200, 
-        .func_p = NULL, 
+        .baud_rate = 9600, 
+        .func_p = UartRecibir, 
         .param_p = NULL
     };
 
