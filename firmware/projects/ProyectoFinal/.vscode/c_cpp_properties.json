@@ -4,6 +4,8 @@
             "name": "ESP-IDF",
             "compilerPath": "C:\\Usuarios\\PC\\.espressif\\tools\\riscv32-esp-elf\\esp-12.2.0_20230208\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe",
             "includePath": [
+                "${config:idf.currentSetup}/components/**",
+                "C:/esp/v5.5.3/esp-idf/components/**",
                 "${config:idf.espIdfPath}/components/**",
                 "${config:idf.espIdfPathWin}/components/**",
                 "${workspaceFolder}/**",
@@ -12,6 +14,8 @@
             ],
             "browse": {
                 "path": [
+                    "${config:idf.currentSetup}/components",
+                    "C:/esp/v5.5.3/esp-idf/components",
                     "${config:idf.espIdfPath}/components",
                     "${config:idf.espIdfPathWin}/components",
                     "${workspaceFolder}/**",

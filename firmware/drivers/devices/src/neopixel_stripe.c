@@ -37,7 +37,7 @@ neopixel_color_t *stripe_colors;
 
 void NeoPixelInit(gpio_t pin, uint16_t len, neopixel_color_t *color_array){
     stripe_length = len;
-	stripe_colors = color_array;
+	stripe_colors = color_array; 
     ws2812bInit(pin);
 }
 
