@@ -60,6 +60,8 @@
 #define NEOPIXEL_HUE_MAGENTA          0xD555      /*> Hue magenta */
 #define NEOPIXEL_HUE_ROSE             0xEAAA      /*> Hue rose */
 
+#define NEOPIXEL_COLOR_BLACK         0x00000000  /*> Color black (off) */
+
 /*==================[typedef]================================================*/
 /**
  * @brief 24 bits color

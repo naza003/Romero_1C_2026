@@ -1,2 +1,2 @@
-idf_component_register(SRCS "ProyectoFinal.c"
+idf_component_register(SRCS "ProyectoIntegrador.c"
                     INCLUDE_DIRS "")
