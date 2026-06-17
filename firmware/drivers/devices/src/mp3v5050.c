@@ -50,7 +50,7 @@ float MP3v5050ReadPressure_kPa(void) {
 
     float vout = (float)value_mv/ 1000.0;  // convierte a voltios
     float pressure_kPa = (((vout - 0.01 )/ 3.3) - 0.04) / 0.018;
-    printf("value_mv = %d\n", value_mv);
+    // printf("value_mv = %d\n", value_mv);
 
     // Convertir y enviar por UART
     
