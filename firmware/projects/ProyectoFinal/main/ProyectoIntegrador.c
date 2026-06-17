@@ -84,16 +84,16 @@ void Tecla1_interrupcion (void* param){
 
 static void ControlNeoPixelProgresivo(float presion_kPa){
 
-    /* 1. Resto la linea base (taramos) */
-    float presion_neta = presion_kPa - 0.84f; //  restamos el reposo
-    if (presion_neta < 0) {
+    /* 1. Resto la linea base (taramos). Sin soplar sensa 0.86kPa*/
+    float presion_neta = presion_kPa - 0.86f; //  restamos el reposo
+    if (presion_neta < 0.05f) {
         presion_neta = 0; // Evitamos valores negativos si el sensor fluctúa a 0.83
     }
 
     /* 2. Calculo cuántos leds prender utilizando regla de tres (mapeo lineal) */
     /* Rango de presión:  0.84kPa (0 LEDs) a 2.7kPa (3.54-0.84) (12 LEDs) */
     
-    int leds_a_encender = (int)((presion_kPa / 2.7f) * 12.0f);
+    int leds_a_encender = (int)((presion_neta / 2.69f) * 12.0f);
     
     /* Contol de límites (si el paciente sopla fuerte la regla de tres puede dar > 12LEDs) */
     if (leds_a_encender < 0) leds_a_encender = 0;
@@ -113,10 +113,12 @@ static void ControlNeoPixelProgresivo(float presion_kPa){
                 pixel_data[i] = NEOPIXEL_COLOR_BLUE; /* LEDs 7, 8, 9 --> AZULES */
            } else if (i<12) {
                 pixel_data[i] = NEOPIXEL_COLOR_VIOLET; /* LEDs 10, 11, 12 --> VIOLETAS */
-           } else {
-                pixel_data[i] = 0; /* LEDs restantes --> APAGADOS */
+           } 
+           
+        } else {
+                pixel_data[i] = NEOPIXEL_COLOR_BLACK; /* LEDs restantes --> APAGADOS */
            }
-        }
+        
     }
 
     /* 3. Envío la orden al NeoPixel */
@@ -147,7 +149,7 @@ static void Sensado(void *pvParameters){
         } else {
             // Limpiamos el arreglo a mano para asegurarnos de que quede en negro
             for(int i = 0; i < 12; i++){
-                pixel_data[i] = 0;
+                pixel_data[i] = NEOPIXEL_COLOR_BLACK; /* Apagamos todos los LEDs */
             }
             NeoPixelSetArray(pixel_data);
         }
