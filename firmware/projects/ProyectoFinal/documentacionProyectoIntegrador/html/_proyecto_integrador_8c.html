@@ -1,0 +1,526 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto1_ElectrónicaProgramable: Referencia del archivo C:/RepositoriosProgramable/Romero_1C_2026/firmware/projects/ProyectoFinal/main/ProyectoIntegrador.c</title>
+<link rel="icon" href="icon.ico" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="fiuner.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Proyecto1_ElectrónicaProgramable<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('_proyecto_integrador_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo ProyectoIntegrador.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
+<code>#include &quot;freertos/task.h&quot;</code><br />
+<code>#include &lt;<a class="el" href="analog__io__mcu_8h_source.html">analog_io_mcu.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="uart__mcu_8h_source.html">uart_mcu.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="timer__mcu_8h_source.html">timer_mcu.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="neopixel__stripe_8h_source.html">neopixel_stripe.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="mp3v5050_8h_source.html">mp3v5050.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="switch_8h_source.html">switch.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="ble__mcu_8h_source.html">ble_mcu.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="led_8h_source.html">led.h</a>&gt;</code><br />
+</div>
+<p><a href="_proyecto_integrador_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:a100d5e7d23fcf40d2cac8815c651379f" id="r_a100d5e7d23fcf40d2cac8815c651379f"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a100d5e7d23fcf40d2cac8815c651379f">periodo_muestreo</a>&#160;&#160;&#160;50</td></tr>
+<tr class="memdesc:a100d5e7d23fcf40d2cac8815c651379f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Periodo de muestreo para la tarea de sensado, definido en ms. Se define como 1000 ms para obtener una buena resolución en la medición sin saturar el sistema.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:ad2b53aa2eb2f35881780639c89e3b1d1" id="r_ad2b53aa2eb2f35881780639c89e3b1d1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ad2b53aa2eb2f35881780639c89e3b1d1">Tecla1_interrupcion</a> (void *param)</td></tr>
+<tr class="memdesc:ad2b53aa2eb2f35881780639c89e3b1d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que atiende a la Tecla 1, que activa o desactiva la medición de presión y el modo de expiración fuerte.  <br /></td></tr>
+<tr class="memitem:a7f56560c73bcb1c4509ca9fbc6db7555" id="r_a7f56560c73bcb1c4509ca9fbc6db7555"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a7f56560c73bcb1c4509ca9fbc6db7555">Tecla2_interrupcion</a> (void *param)</td></tr>
+<tr class="memdesc:a7f56560c73bcb1c4509ca9fbc6db7555"><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que atiende a la Tecla 2, que activa o desactiva la medición de presión y el modo de expiración mantenida.  <br /></td></tr>
+<tr class="memitem:a717ffa64d0d42cac43e95a2ba61e562b" id="r_a717ffa64d0d42cac43e95a2ba61e562b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a717ffa64d0d42cac43e95a2ba61e562b">RecibirDatoBluetooth</a> (uint8_t *data, uint8_t length)</td></tr>
+<tr class="memdesc:a717ffa64d0d42cac43e95a2ba61e562b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Función callback que se ejecuta cuando llega un dato por Bluetooth.  <br /></td></tr>
+<tr class="memitem:a630544a7f0a2cc40d8a7fefab7e2fe70" id="r_a630544a7f0a2cc40d8a7fefab7e2fe70"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a> (void)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:acba3bd2f9d5cb73c34ac6276904b36c2" id="r_acba3bd2f9d5cb73c34ac6276904b36c2"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a> = false</td></tr>
+<tr class="memdesc:acba3bd2f9d5cb73c34ac6276904b36c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable booleana que cambia de estado según se presione o no la tecla. Controla el inicio o no de la medición de presión.  <br /></td></tr>
+<tr class="memitem:ae997758e8d727f15d209e875112140fa" id="r_ae997758e8d727f15d209e875112140fa"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ae997758e8d727f15d209e875112140fa">expiracion_fuerte</a> = false</td></tr>
+<tr class="memdesc:ae997758e8d727f15d209e875112140fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable booleana que indica el tipo de expiración a medir.  <br /></td></tr>
+<tr class="memitem:ac9af8a6963c08faa13012d0b21bd3e98" id="r_ac9af8a6963c08faa13012d0b21bd3e98"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ac9af8a6963c08faa13012d0b21bd3e98">expiracion_mantenida</a> = false</td></tr>
+<tr class="memdesc:ac9af8a6963c08faa13012d0b21bd3e98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable booleana que indica el tipo de expiración a medir.  <br /></td></tr>
+<tr class="memitem:a99757d01f4ffa0690648fbb52194580f" id="r_a99757d01f4ffa0690648fbb52194580f"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a99757d01f4ffa0690648fbb52194580f">presion_maxima</a> = 0.0f</td></tr>
+<tr class="memdesc:a99757d01f4ffa0690648fbb52194580f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable para almacenar la presión máxima medida durante la sesión de soplo.  <br /></td></tr>
+<tr class="memitem:a8771433b76f3a78fc3fd8e523bd6df5d" id="r_a8771433b76f3a78fc3fd8e523bd6df5d"><td class="memItemLeft">uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> = 0</td></tr>
+<tr class="memdesc:a8771433b76f3a78fc3fd8e523bd6df5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable para almacenar el tiempo de espiración en milisegundos.  <br /></td></tr>
+<tr class="memitem:a2dd2975a46006308d2b1fd19d5a496e2" id="r_a2dd2975a46006308d2b1fd19d5a496e2"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a2dd2975a46006308d2b1fd19d5a496e2">volumen_relativo_acumulado</a> = 0.0f</td></tr>
+<tr class="memdesc:a2dd2975a46006308d2b1fd19d5a496e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable para acumular el volumen relativo durante la sesión de soplo.  <br /></td></tr>
+<tr class="memitem:aca62aa99037ec0b9bb1c3acaaa7a673a" id="r_aca62aa99037ec0b9bb1c3acaaa7a673a"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> = false</td></tr>
+<tr class="memdesc:aca62aa99037ec0b9bb1c3acaaa7a673a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable booleana para indicar si el paciente está soplando o no.  <br /></td></tr>
+<tr class="memitem:adec48076df1dd4c921ab341e9c5a6ebb" id="r_adec48076df1dd4c921ab341e9c5a6ebb"><td class="memItemLeft">uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#adec48076df1dd4c921ab341e9c5a6ebb">tiempo_espera_visual_ms</a> = 0</td></tr>
+<tr class="memdesc:adec48076df1dd4c921ab341e9c5a6ebb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controla cuánto tiempo se muestran el rojo/verde.  <br /></td></tr>
+<tr class="memitem:a5422015146780d82ef34e2417c3d41d4" id="r_a5422015146780d82ef34e2417c3d41d4"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#a5422015146780d82ef34e2417c3d41d4">msg1</a> [64]</td></tr>
+<tr class="memdesc:a5422015146780d82ef34e2417c3d41d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer para mensaje de resultados del modo fuerte.  <br /></td></tr>
+<tr class="memitem:ab871f7def04fe5908be9b8a258b7ce69" id="r_ab871f7def04fe5908be9b8a258b7ce69"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#ab871f7def04fe5908be9b8a258b7ce69">msg2</a> [64]</td></tr>
+<tr class="memdesc:ab871f7def04fe5908be9b8a258b7ce69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer para mensaje de resultados del modo mantenido.  <br /></td></tr>
+<tr class="memitem:ab8baacfbcd57dc071bf96da57c11175b" id="r_ab8baacfbcd57dc071bf96da57c11175b"><td class="memItemLeft">TaskHandle_t&#160;</td><td class="memItemRight"><a class="el" href="#ab8baacfbcd57dc071bf96da57c11175b">Sensado_task_handle</a> = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
+<tr class="memitem:aa26c4b7bc7402d2f931a63a1ca9919e6" id="r_aa26c4b7bc7402d2f931a63a1ca9919e6"><td class="memItemLeft">TaskHandle_t&#160;</td><td class="memItemRight"><a class="el" href="#aa26c4b7bc7402d2f931a63a1ca9919e6">ControlBle_task_handle</a> = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
+</table>
+<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentación de «define»</h2>
+<a id="a100d5e7d23fcf40d2cac8815c651379f" name="a100d5e7d23fcf40d2cac8815c651379f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a100d5e7d23fcf40d2cac8815c651379f">&#9670;&#160;</a></span>periodo_muestreo</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define periodo_muestreo&#160;&#160;&#160;50</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Periodo de muestreo para la tarea de sensado, definido en ms. Se define como 1000 ms para obtener una buena resolución en la medición sin saturar el sistema. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00055">55</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="a630544a7f0a2cc40d8a7fefab7e2fe70" name="a630544a7f0a2cc40d8a7fefab7e2fe70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a630544a7f0a2cc40d8a7fefab7e2fe70">&#9670;&#160;</a></span>app_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void app_main </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00438">438</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="ble__mcu_8c_source.html#l00452">BleInit()</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00116">ControlBle_task_handle</a>, <a class="el" href="gpio__mcu_8h_source.html#l00075">GPIO_23</a>, <a class="el" href="led_8c_source.html#l00031">LedsInit()</a>, <a class="el" href="mp3v5050_8c_source.html#l00034">MP3v5050Init()</a>, <a class="el" href="neopixel__stripe_8c_source.html#l00044">NeoPixelAllOff()</a>, <a class="el" href="neopixel__stripe_8c_source.html#l00038">NeoPixelInit()</a>, <a class="el" href="ili9341_8c_source.html#l00019">NULL</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00167">RecibirDatoBluetooth()</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00115">Sensado_task_handle</a>, <a class="el" href="switch_8h_source.html#l00032">SWITCH_1</a>, <a class="el" href="switch_8h_source.html#l00033">SWITCH_2</a>, <a class="el" href="switch_8c_source.html#l00047">SwitchActivInt()</a>, <a class="el" href="switch_8c_source.html#l00029">SwitchesInit()</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00124">Tecla1_interrupcion()</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00140">Tecla2_interrupcion()</a>, <a class="el" href="uart__mcu_8h_source.html#l00032">UART_PC</a> y <a class="el" href="uart__mcu_8c_source.html#l00107">UartInit()</a>.</p>
+
+</div>
+</div>
+<a id="a717ffa64d0d42cac43e95a2ba61e562b" name="a717ffa64d0d42cac43e95a2ba61e562b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a717ffa64d0d42cac43e95a2ba61e562b">&#9670;&#160;</a></span>RecibirDatoBluetooth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RecibirDatoBluetooth </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Función callback que se ejecuta cuando llega un dato por Bluetooth. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00167">167</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_proyecto_integrador_8c_source.html#l00066">expiracion_fuerte</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00071">expiracion_mantenida</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00061">medir_presion</a>, <a class="el" href="neopixel__stripe_8h_source.html#l00063">NEOPIXEL_COLOR_BLACK</a>, <a class="el" href="neopixel__stripe_8h_source.html#l00036">NEOPIXEL_COLOR_WHITE</a>, <a class="el" href="neopixel__stripe_8c_source.html#l00070">NeoPixelSetArray()</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00082">presion_maxima</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00097">soplando</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00087">tiempo_espiracion_ms</a> y <a class="el" href="_proyecto_integrador_8c_source.html#l00092">volumen_relativo_acumulado</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto_integrador_8c_source.html#l00438">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="ad2b53aa2eb2f35881780639c89e3b1d1" name="ad2b53aa2eb2f35881780639c89e3b1d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2b53aa2eb2f35881780639c89e3b1d1">&#9670;&#160;</a></span>Tecla1_interrupcion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tecla1_interrupcion </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>param</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Función que atiende a la Tecla 1, que activa o desactiva la medición de presión y el modo de expiración fuerte. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00124">124</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_proyecto_integrador_8c_source.html#l00066">expiracion_fuerte</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00071">expiracion_mantenida</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00061">medir_presion</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00082">presion_maxima</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00097">soplando</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00087">tiempo_espiracion_ms</a> y <a class="el" href="_proyecto_integrador_8c_source.html#l00092">volumen_relativo_acumulado</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto_integrador_8c_source.html#l00438">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="a7f56560c73bcb1c4509ca9fbc6db7555" name="a7f56560c73bcb1c4509ca9fbc6db7555"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f56560c73bcb1c4509ca9fbc6db7555">&#9670;&#160;</a></span>Tecla2_interrupcion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tecla2_interrupcion </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>param</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Función que atiende a la Tecla 2, que activa o desactiva la medición de presión y el modo de expiración mantenida. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00140">140</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_proyecto_integrador_8c_source.html#l00066">expiracion_fuerte</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00071">expiracion_mantenida</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00061">medir_presion</a>, <a class="el" href="neopixel__stripe_8h_source.html#l00063">NEOPIXEL_COLOR_BLACK</a>, <a class="el" href="neopixel__stripe_8h_source.html#l00036">NEOPIXEL_COLOR_WHITE</a>, <a class="el" href="neopixel__stripe_8c_source.html#l00070">NeoPixelSetArray()</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00097">soplando</a> y <a class="el" href="_proyecto_integrador_8c_source.html#l00087">tiempo_espiracion_ms</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto_integrador_8c_source.html#l00438">app_main()</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentación de variables</h2>
+<a id="aa26c4b7bc7402d2f931a63a1ca9919e6" name="aa26c4b7bc7402d2f931a63a1ca9919e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa26c4b7bc7402d2f931a63a1ca9919e6">&#9670;&#160;</a></span>ControlBle_task_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t ControlBle_task_handle = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00116">116</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto_integrador_8c_source.html#l00438">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="ae997758e8d727f15d209e875112140fa" name="ae997758e8d727f15d209e875112140fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae997758e8d727f15d209e875112140fa">&#9670;&#160;</a></span>expiracion_fuerte</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool expiracion_fuerte = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variable booleana que indica el tipo de expiración a medir. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00066">66</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto_integrador_8c_source.html#l00167">RecibirDatoBluetooth()</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00124">Tecla1_interrupcion()</a> y <a class="el" href="_proyecto_integrador_8c_source.html#l00140">Tecla2_interrupcion()</a>.</p>
+
+</div>
+</div>
+<a id="ac9af8a6963c08faa13012d0b21bd3e98" name="ac9af8a6963c08faa13012d0b21bd3e98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9af8a6963c08faa13012d0b21bd3e98">&#9670;&#160;</a></span>expiracion_mantenida</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool expiracion_mantenida = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variable booleana que indica el tipo de expiración a medir. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00071">71</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto_integrador_8c_source.html#l00167">RecibirDatoBluetooth()</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00124">Tecla1_interrupcion()</a> y <a class="el" href="_proyecto_integrador_8c_source.html#l00140">Tecla2_interrupcion()</a>.</p>
+
+</div>
+</div>
+<a id="acba3bd2f9d5cb73c34ac6276904b36c2" name="acba3bd2f9d5cb73c34ac6276904b36c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acba3bd2f9d5cb73c34ac6276904b36c2">&#9670;&#160;</a></span>medir_presion</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool medir_presion = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variable booleana que cambia de estado según se presione o no la tecla. Controla el inicio o no de la medición de presión. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00061">61</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto_integrador_8c_source.html#l00167">RecibirDatoBluetooth()</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00124">Tecla1_interrupcion()</a> y <a class="el" href="_proyecto_integrador_8c_source.html#l00140">Tecla2_interrupcion()</a>.</p>
+
+</div>
+</div>
+<a id="a5422015146780d82ef34e2417c3d41d4" name="a5422015146780d82ef34e2417c3d41d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5422015146780d82ef34e2417c3d41d4">&#9670;&#160;</a></span>msg1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char msg1[64]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Buffer para mensaje de resultados del modo fuerte. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00107">107</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+</div>
+</div>
+<a id="ab871f7def04fe5908be9b8a258b7ce69" name="ab871f7def04fe5908be9b8a258b7ce69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab871f7def04fe5908be9b8a258b7ce69">&#9670;&#160;</a></span>msg2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char msg2[64]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Buffer para mensaje de resultados del modo mantenido. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00112">112</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+</div>
+</div>
+<a id="a99757d01f4ffa0690648fbb52194580f" name="a99757d01f4ffa0690648fbb52194580f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99757d01f4ffa0690648fbb52194580f">&#9670;&#160;</a></span>presion_maxima</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float presion_maxima = 0.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variable para almacenar la presión máxima medida durante la sesión de soplo. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00082">82</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto_integrador_8c_source.html#l00167">RecibirDatoBluetooth()</a> y <a class="el" href="_proyecto_integrador_8c_source.html#l00124">Tecla1_interrupcion()</a>.</p>
+
+</div>
+</div>
+<a id="ab8baacfbcd57dc071bf96da57c11175b" name="ab8baacfbcd57dc071bf96da57c11175b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8baacfbcd57dc071bf96da57c11175b">&#9670;&#160;</a></span>Sensado_task_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t Sensado_task_handle = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00115">115</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto_integrador_8c_source.html#l00438">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="aca62aa99037ec0b9bb1c3acaaa7a673a" name="aca62aa99037ec0b9bb1c3acaaa7a673a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca62aa99037ec0b9bb1c3acaaa7a673a">&#9670;&#160;</a></span>soplando</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool soplando = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variable booleana para indicar si el paciente está soplando o no. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00097">97</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto_integrador_8c_source.html#l00167">RecibirDatoBluetooth()</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00124">Tecla1_interrupcion()</a> y <a class="el" href="_proyecto_integrador_8c_source.html#l00140">Tecla2_interrupcion()</a>.</p>
+
+</div>
+</div>
+<a id="adec48076df1dd4c921ab341e9c5a6ebb" name="adec48076df1dd4c921ab341e9c5a6ebb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adec48076df1dd4c921ab341e9c5a6ebb">&#9670;&#160;</a></span>tiempo_espera_visual_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t tiempo_espera_visual_ms = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Controla cuánto tiempo se muestran el rojo/verde. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00102">102</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+</div>
+</div>
+<a id="a8771433b76f3a78fc3fd8e523bd6df5d" name="a8771433b76f3a78fc3fd8e523bd6df5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8771433b76f3a78fc3fd8e523bd6df5d">&#9670;&#160;</a></span>tiempo_espiracion_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t tiempo_espiracion_ms = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variable para almacenar el tiempo de espiración en milisegundos. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00087">87</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto_integrador_8c_source.html#l00167">RecibirDatoBluetooth()</a>, <a class="el" href="_proyecto_integrador_8c_source.html#l00124">Tecla1_interrupcion()</a> y <a class="el" href="_proyecto_integrador_8c_source.html#l00140">Tecla2_interrupcion()</a>.</p>
+
+</div>
+</div>
+<a id="a2dd2975a46006308d2b1fd19d5a496e2" name="a2dd2975a46006308d2b1fd19d5a496e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dd2975a46006308d2b1fd19d5a496e2">&#9670;&#160;</a></span>volumen_relativo_acumulado</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float volumen_relativo_acumulado = 0.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variable para acumular el volumen relativo durante la sesión de soplo. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto_integrador_8c_source.html#l00092">92</a> del archivo <a class="el" href="_proyecto_integrador_8c_source.html">ProyectoIntegrador.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto_integrador_8c_source.html#l00167">RecibirDatoBluetooth()</a> y <a class="el" href="_proyecto_integrador_8c_source.html#l00124">Tecla1_interrupcion()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html">firmware</a></li><li class="navelem"><a href="dir_429d80758da54da73083af4edd40d0b3.html">projects</a></li><li class="navelem"><a href="dir_49cab978dd6222f95fec48dd18bcb29c.html">ProyectoFinal</a></li><li class="navelem"><a href="dir_0cd45db885baac9c0efb66acd875c4ba.html">main</a></li><li class="navelem"><a href="_proyecto_integrador_8c.html">ProyectoIntegrador.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

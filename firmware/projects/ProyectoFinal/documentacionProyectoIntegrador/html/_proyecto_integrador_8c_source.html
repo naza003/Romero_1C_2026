@@ -1,0 +1,550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto1_ElectrónicaProgramable: Archivo de código fuente C:/RepositoriosProgramable/Romero_1C_2026/firmware/projects/ProyectoFinal/main/ProyectoIntegrador.c</title>
+<link rel="icon" href="icon.ico" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="fiuner.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Proyecto1_ElectrónicaProgramable<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('_proyecto_integrador_8c_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ProyectoIntegrador.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_proyecto_integrador_8c.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">/*==================[inclusions]=============================================*/</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &quot;freertos/task.h&quot;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &lt;<a class="code" href="analog__io__mcu_8h.html">analog_io_mcu.h</a>&gt;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#include &lt;<a class="code" href="uart__mcu_8h.html">uart_mcu.h</a>&gt;</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;<a class="code" href="timer__mcu_8h.html">timer_mcu.h</a>&gt;</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &lt;<a class="code" href="neopixel__stripe_8h.html">neopixel_stripe.h</a>&gt;</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#include &lt;<a class="code" href="mp3v5050_8h.html">mp3v5050.h</a>&gt;</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#include &lt;<a class="code" href="switch_8h.html">switch.h</a>&gt;</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#include &lt;<a class="code" href="ble__mcu_8h.html">ble_mcu.h</a>&gt;</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#include &lt;<a class="code" href="led_8h.html">led.h</a>&gt;</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">/*==================[macros and definitions]=================================*/</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#a100d5e7d23fcf40d2cac8815c651379f">   55</a></span><span class="preprocessor">#define periodo_muestreo 50 </span><span class="comment">//ms </span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">   61</a></span><span class="keywordtype">bool</span> <a class="code hl_variable" href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#ae997758e8d727f15d209e875112140fa">   66</a></span><span class="keywordtype">bool</span> <a class="code hl_variable" href="_proyecto_integrador_8c.html#ae997758e8d727f15d209e875112140fa">expiracion_fuerte</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#ac9af8a6963c08faa13012d0b21bd3e98">   71</a></span><span class="keywordtype">bool</span> <a class="code hl_variable" href="_proyecto_integrador_8c.html#ac9af8a6963c08faa13012d0b21bd3e98">expiracion_mantenida</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">static</span> <a class="code hl_typedef" href="group___neo_pixel___stripe.html#ga46c58082e9d85e6503e36f0e2306bb39">neopixel_color_t</a> pixel_data[12];</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#a99757d01f4ffa0690648fbb52194580f">   82</a></span><span class="keywordtype">float</span> <a class="code hl_variable" href="_proyecto_integrador_8c.html#a99757d01f4ffa0690648fbb52194580f">presion_maxima</a> = 0.0f; </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">   87</a></span>uint32_t <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> = 0; </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#a2dd2975a46006308d2b1fd19d5a496e2">   92</a></span><span class="keywordtype">float</span> <a class="code hl_variable" href="_proyecto_integrador_8c.html#a2dd2975a46006308d2b1fd19d5a496e2">volumen_relativo_acumulado</a> = 0.0f; </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">   97</a></span><span class="keywordtype">bool</span> <a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> = <span class="keyword">false</span>; </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#adec48076df1dd4c921ab341e9c5a6ebb">  102</a></span>uint32_t <a class="code hl_variable" href="_proyecto_integrador_8c.html#adec48076df1dd4c921ab341e9c5a6ebb">tiempo_espera_visual_ms</a> = 0;    </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#a5422015146780d82ef34e2417c3d41d4">  107</a></span><span class="keywordtype">char</span> <a class="code hl_variable" href="_proyecto_integrador_8c.html#a5422015146780d82ef34e2417c3d41d4">msg1</a>[64]; </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#ab871f7def04fe5908be9b8a258b7ce69">  112</a></span><span class="keywordtype">char</span> <a class="code hl_variable" href="_proyecto_integrador_8c.html#ab871f7def04fe5908be9b8a258b7ce69">msg2</a>[64]; </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">/*==================[internal data definition]===============================*/</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#ab8baacfbcd57dc071bf96da57c11175b">  115</a></span>TaskHandle_t <a class="code hl_variable" href="_proyecto_integrador_8c.html#ab8baacfbcd57dc071bf96da57c11175b">Sensado_task_handle</a> = <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#aa26c4b7bc7402d2f931a63a1ca9919e6">  116</a></span>TaskHandle_t <a class="code hl_variable" href="_proyecto_integrador_8c.html#aa26c4b7bc7402d2f931a63a1ca9919e6">ControlBle_task_handle</a> = <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">/*==================[internal functions declaration]================================*/</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span></div>
+<div class="foldopen" id="foldopen00124" data-start="{" data-end="}">
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#ad2b53aa2eb2f35881780639c89e3b1d1">  124</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_proyecto_integrador_8c.html#ad2b53aa2eb2f35881780639c89e3b1d1">Tecla1_interrupcion</a> (<span class="keywordtype">void</span>* param){</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <a class="code hl_variable" href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a> = !<a class="code hl_variable" href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a>;   <span class="comment">/* Cambia el estado de medir_presion */</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <a class="code hl_variable" href="_proyecto_integrador_8c.html#ae997758e8d727f15d209e875112140fa">expiracion_fuerte</a> = <a class="code hl_variable" href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a>;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <a class="code hl_variable" href="_proyecto_integrador_8c.html#ac9af8a6963c08faa13012d0b21bd3e98">expiracion_mantenida</a> = <span class="keyword">false</span>; <span class="comment">/* Solo puede estar activo un modo a la vez */</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="comment">// Reseteo variables globales de terapia por seguridad</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> = 0;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <a class="code hl_variable" href="_proyecto_integrador_8c.html#a2dd2975a46006308d2b1fd19d5a496e2">volumen_relativo_acumulado</a> = 0.0f;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <a class="code hl_variable" href="_proyecto_integrador_8c.html#a99757d01f4ffa0690648fbb52194580f">presion_maxima</a> = 0.0f;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>}</div>
+</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span></div>
+<div class="foldopen" id="foldopen00140" data-start="{" data-end="}">
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#a7f56560c73bcb1c4509ca9fbc6db7555">  140</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_proyecto_integrador_8c.html#a7f56560c73bcb1c4509ca9fbc6db7555">Tecla2_interrupcion</a> (<span class="keywordtype">void</span>* param){</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <a class="code hl_variable" href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a> = !<a class="code hl_variable" href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a>;   <span class="comment">/* Cambia el estado de medir_presion */</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <a class="code hl_variable" href="_proyecto_integrador_8c.html#ac9af8a6963c08faa13012d0b21bd3e98">expiracion_mantenida</a> = <a class="code hl_variable" href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a>;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <a class="code hl_variable" href="_proyecto_integrador_8c.html#ae997758e8d727f15d209e875112140fa">expiracion_fuerte</a> = <span class="keyword">false</span>; <span class="comment">/* Solo puede estar activo un modo a la vez */</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> = 0; <span class="comment">// Reinicio el reloj por las dudas</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> = <span class="keyword">false</span>; </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="comment">// Se ACTIVA el modo, todos los leds se prenden </span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="_proyecto_integrador_8c.html#ac9af8a6963c08faa13012d0b21bd3e98">expiracion_mantenida</a> == <span class="keyword">true</span>) {</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 12; i++){</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>            pixel_data[i] = <a class="code hl_define" href="group___neo_pixel___stripe.html#gab21b8bf436d12066d07deef42b83e272">NEOPIXEL_COLOR_WHITE</a>; <span class="comment">/* Le aviso que está listo para comenzar */</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        }</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <a class="code hl_function" href="group___neo_pixel___stripe.html#ga23ae424d3a323c2e315b3f89ba857a84">NeoPixelSetArray</a>(pixel_data); </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="comment">// se DESACTIVA el modo, apago todos los leds</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 12; i++){</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            pixel_data[i] = <a class="code hl_define" href="group___neo_pixel___stripe.html#gafd58c227e5df28bb126e2be655e80c01">NEOPIXEL_COLOR_BLACK</a>; </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        }</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <a class="code hl_function" href="group___neo_pixel___stripe.html#ga23ae424d3a323c2e315b3f89ba857a84">NeoPixelSetArray</a>(pixel_data); </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    }</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>}</div>
+</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span></div>
+<div class="foldopen" id="foldopen00167" data-start="{" data-end="}">
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#a717ffa64d0d42cac43e95a2ba61e562b">  167</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_proyecto_integrador_8c.html#a717ffa64d0d42cac43e95a2ba61e562b">RecibirDatoBluetooth</a>(uint8_t *data, uint8_t length) {</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="comment">// Tomamos el primer caracter del dato recibido</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordtype">char</span> comando = (char)data[0];</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keywordflow">if</span> (comando == <span class="charliteral">&#39;f&#39;</span>) {</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <span class="comment">// --- EQUIVALENTE A PRESIONAR SWITCH 1 (Modo Fuerte) ---</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a> = !<a class="code hl_variable" href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a>;   </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#ae997758e8d727f15d209e875112140fa">expiracion_fuerte</a> = <a class="code hl_variable" href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a>;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#ac9af8a6963c08faa13012d0b21bd3e98">expiracion_mantenida</a> = <span class="keyword">false</span>; </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> = 0;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#a2dd2975a46006308d2b1fd19d5a496e2">volumen_relativo_acumulado</a> = 0.0f;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#a99757d01f4ffa0690648fbb52194580f">presion_maxima</a> = 0.0f;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    } </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (comando == <span class="charliteral">&#39;m&#39;</span>) {</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        <span class="comment">// --- EQUIVALENTE A PRESIONAR SWITCH 2 (Modo Mantenido) ---</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a> = !<a class="code hl_variable" href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a>;   </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#ac9af8a6963c08faa13012d0b21bd3e98">expiracion_mantenida</a> = <a class="code hl_variable" href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a>;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#ae997758e8d727f15d209e875112140fa">expiracion_fuerte</a> = <span class="keyword">false</span>; </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> = 0; </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>            </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="_proyecto_integrador_8c.html#ac9af8a6963c08faa13012d0b21bd3e98">expiracion_mantenida</a> == <span class="keyword">true</span>) {</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 12; i++){</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                pixel_data[i] = <a class="code hl_define" href="group___neo_pixel___stripe.html#gab21b8bf436d12066d07deef42b83e272">NEOPIXEL_COLOR_WHITE</a>; </div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>            }</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            <a class="code hl_function" href="group___neo_pixel___stripe.html#ga23ae424d3a323c2e315b3f89ba857a84">NeoPixelSetArray</a>(pixel_data); </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 12; i++){</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                pixel_data[i] = <a class="code hl_define" href="group___neo_pixel___stripe.html#gafd58c227e5df28bb126e2be655e80c01">NEOPIXEL_COLOR_BLACK</a>; </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            }</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>            <a class="code hl_function" href="group___neo_pixel___stripe.html#ga23ae424d3a323c2e315b3f89ba857a84">NeoPixelSetArray</a>(pixel_data); </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        }</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    }</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>}</div>
+</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="keyword">static</span> <span class="keywordtype">void</span> ExpiracionFuerte(<span class="keywordtype">float</span> presion_neta_kPa_1){</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    </div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <span class="comment">/* 1. Calculo cuántos leds prender utilizando regla de tres (mapeo lineal) */</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="comment">/* Rango de presión:  0.84kPa (0 LEDs) a 2.7kPa (3.54-0.84) (12 LEDs) */</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    </div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keywordtype">int</span> leds_a_encender = (int)((presion_neta_kPa_1 / 2.69f) * 12.0f);</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    </div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="comment">/* Contol de límites (si el paciente sopla con demás fuerza la regla de tres puede dar &gt; 12LEDs) */</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordflow">if</span> (leds_a_encender &lt; 0) leds_a_encender = 0;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    <span class="keywordflow">if</span> (leds_a_encender &gt; 12) leds_a_encender = 12;</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="comment">/* 2. Bucle para recorrer los 12 LEDs */</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 12; i++) {</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="keywordflow">if</span> (i &lt; leds_a_encender) {</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            <span class="comment">/* Indico el color del LED encendido según su posición */</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            <span class="keywordflow">if</span> (i&lt;3) {</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>                pixel_data[i] = <a class="code hl_define" href="group___neo_pixel___stripe.html#ga2e1dcc1fe1f1ec8488bc4185597108f2">NEOPIXEL_COLOR_RED</a>;  <span class="comment">/* LEDs 1, 2 ,3 --&gt; ROJOS */</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>           } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (i&lt;6) {</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>                pixel_data[i] = <a class="code hl_define" href="group___neo_pixel___stripe.html#ga94c4bcd376cbef7becd93531c1031df6">NEOPIXEL_COLOR_YELLOW</a>; <span class="comment">/* LEDs 4, 5, 6 --&gt; AMARILLOS */</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>           } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (i&lt;9) {</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>                pixel_data[i] = <a class="code hl_define" href="group___neo_pixel___stripe.html#ga0b34bb5f5ac15880f7ee287053559470">NEOPIXEL_COLOR_BLUE</a>; <span class="comment">/* LEDs 7, 8, 9 --&gt; AZULES */</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>           }    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (i&lt;12) {</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>                pixel_data[i] = <a class="code hl_define" href="group___neo_pixel___stripe.html#ga1c1707be8a267a4d1f32640ff25a38f5">NEOPIXEL_COLOR_VIOLET</a>; <span class="comment">/* LEDs 10, 11, 12 --&gt; VIOLETAS */</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>           } </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>                pixel_data[i] = <a class="code hl_define" href="group___neo_pixel___stripe.html#gafd58c227e5df28bb126e2be655e80c01">NEOPIXEL_COLOR_BLACK</a>; <span class="comment">/* LEDs restantes --&gt; APAGADOS */</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>           }</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        </div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    }</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <a class="code hl_function" href="group___neo_pixel___stripe.html#ga23ae424d3a323c2e315b3f89ba857a84">NeoPixelSetArray</a>(pixel_data); </div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="comment">/* 3. Análisis del soplo */</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keywordflow">if</span> (presion_neta_kPa_1 &gt; 0.0f) {</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="comment">// EL PACIENTE ESTÁ SOPLANDO</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>                </div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="comment">// Cronómetro: sumamos los 50ms de este ciclo</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> += <a class="code hl_define" href="_proyecto_integrador_8c.html#a100d5e7d23fcf40d2cac8815c651379f">periodo_muestreo</a>; </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>                </div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        <span class="comment">// Integración (Área bajo la curva): sumamos Flujo * Tiempo(en segundos)</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#a2dd2975a46006308d2b1fd19d5a496e2">volumen_relativo_acumulado</a> += (presion_neta_kPa_1 * (<a class="code hl_define" href="_proyecto_integrador_8c.html#a100d5e7d23fcf40d2cac8815c651379f">periodo_muestreo</a> / 1000.0f));</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        <span class="comment">// Récord de presión: ¿es mayor al máximo de este soplido?</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        <span class="keywordflow">if</span> (presion_neta_kPa_1 &gt; <a class="code hl_variable" href="_proyecto_integrador_8c.html#a99757d01f4ffa0690648fbb52194580f">presion_maxima</a>) {</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>            <a class="code hl_variable" href="_proyecto_integrador_8c.html#a99757d01f4ffa0690648fbb52194580f">presion_maxima</a> = presion_neta_kPa_1;</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>        }</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span> </div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> == <span class="keyword">true</span> &amp;&amp; presion_neta_kPa_1 == 0.0f) {</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        <span class="comment">// EL PACIENTE ACABA DE TERMINAR EL SOPLIDO (Flanco de bajada)</span></div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        <span class="keywordtype">float</span> tiempo_soplado_segundos = <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> / 1000.0f;</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span> </div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        <span class="comment">/* 4. MOSTRAMOS LOS RESULTADOS */</span></div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        snprintf(<a class="code hl_variable" href="_proyecto_integrador_8c.html#a5422015146780d82ef34e2417c3d41d4">msg1</a>, <span class="keyword">sizeof</span>(<a class="code hl_variable" href="_proyecto_integrador_8c.html#a5422015146780d82ef34e2417c3d41d4">msg1</a>), <span class="stringliteral">&quot;*KMax:%.2f kPa | Dur:%.1f s | VolumenRelatvo:%.2f\n*&quot;</span>, </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>                <a class="code hl_variable" href="_proyecto_integrador_8c.html#a99757d01f4ffa0690648fbb52194580f">presion_maxima</a>, tiempo_soplado_segundos, <a class="code hl_variable" href="_proyecto_integrador_8c.html#a2dd2975a46006308d2b1fd19d5a496e2">volumen_relativo_acumulado</a>);</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="group___b_l_e.html#ga45f64ecb9f703ecc50b85b6967e85bd5">BleStatus</a>() == <a class="code hl_enumvalue" href="group___b_l_e.html#ggab13ed63d3b157b93f1e6d98e3d6a7b47a6622372da21e5c0e32cf5c4445145399">BLE_CONNECTED</a>) {</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>            <a class="code hl_function" href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a>(<a class="code hl_variable" href="_proyecto_integrador_8c.html#a5422015146780d82ef34e2417c3d41d4">msg1</a>);</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        } </div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        <span class="comment">// RESETEAMOS TODO para el siguiente soplido</span></div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> = 0;</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#a2dd2975a46006308d2b1fd19d5a496e2">volumen_relativo_acumulado</a> = 0.0f;</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#a99757d01f4ffa0690648fbb52194580f">presion_maxima</a> = 0.0f;</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    }    </div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>}</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span></div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span><span class="keyword">static</span> <span class="keywordtype">void</span> ExpiracionMantenida(<span class="keywordtype">float</span> presion_neta_kPa_2){</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    <span class="keywordtype">bool</span> enviar_mensaje = <span class="keyword">false</span>; </div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    <span class="comment">// Si el temporizador visual está corriendo, mantenemos el color final y descontamos tiempo</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="_proyecto_integrador_8c.html#adec48076df1dd4c921ab341e9c5a6ebb">tiempo_espera_visual_ms</a> &gt; 0) {</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="_proyecto_integrador_8c.html#adec48076df1dd4c921ab341e9c5a6ebb">tiempo_espera_visual_ms</a> &gt;= <a class="code hl_define" href="_proyecto_integrador_8c.html#a100d5e7d23fcf40d2cac8815c651379f">periodo_muestreo</a>) {</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>            <a class="code hl_variable" href="_proyecto_integrador_8c.html#adec48076df1dd4c921ab341e9c5a6ebb">tiempo_espera_visual_ms</a> -= <a class="code hl_define" href="_proyecto_integrador_8c.html#a100d5e7d23fcf40d2cac8815c651379f">periodo_muestreo</a>;</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>            <a class="code hl_variable" href="_proyecto_integrador_8c.html#adec48076df1dd4c921ab341e9c5a6ebb">tiempo_espera_visual_ms</a> = 0;</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        }</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        <span class="keywordflow">return</span>; <span class="comment">// Salimos de la función para mantener el color en el NeoPixel sin recalcular</span></div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    }</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    <span class="comment">/* El paciente está espirando?*/</span></div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    <span class="keywordflow">if</span> (presion_neta_kPa_2 &gt; 0.0f) {</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    } <span class="keywordflow">else</span> <a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span> </div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    <span class="comment">/* Controlo el neopixel*/</span></div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> == <span class="keyword">true</span> &amp;&amp; <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> &lt; 2000){</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>        <span class="comment">/* Estado: ARRANCA LA CUENTA REGRESIVA */</span></div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> += <a class="code hl_define" href="_proyecto_integrador_8c.html#a100d5e7d23fcf40d2cac8815c651379f">periodo_muestreo</a>; <span class="comment">/* Cronómetro: le sumo los 50ms de este ciclo */</span></div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span> </div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>        <span class="comment">/*Calculo cuantos leds apagar por segundo (3 cada 1000ms)*/</span></div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>        <span class="keywordtype">int</span> leds_a_apagar = (<a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> *12) / 2000;</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>        <span class="keywordtype">int</span> leds_encendidos = 12 - leds_a_apagar;</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span> </div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 12; i++){</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>            <span class="keywordflow">if</span> (i &lt; leds_encendidos) {</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>                pixel_data[i] = <a class="code hl_define" href="group___neo_pixel___stripe.html#ga6eac59a3417616eea96c26c43823fbc6">NEOPIXEL_COLOR_ROSE</a>; <span class="comment">/* Le aviso que está sensando el soplo */</span></div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>                pixel_data[i] = <a class="code hl_define" href="group___neo_pixel___stripe.html#gafd58c227e5df28bb126e2be655e80c01">NEOPIXEL_COLOR_BLACK</a>; <span class="comment">/* Se van apagando */</span></div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>            }</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>        }</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>        <a class="code hl_function" href="group___neo_pixel___stripe.html#ga23ae424d3a323c2e315b3f89ba857a84">NeoPixelSetArray</a>(pixel_data);</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    </div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> == <span class="keyword">true</span> &amp;&amp; <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> &gt;= 2000) {   </div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>        <span class="comment">/* Estado: TIEMPO COMPLETADO. El paciente sigue espirando*/</span></div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        <span class="comment">/*Se ponen en verde*/</span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 12; i++) {</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>            pixel_data[i] = <a class="code hl_define" href="group___neo_pixel___stripe.html#gac8188c114d2342b3ca60466df01c7111">NEOPIXEL_COLOR_GREEN</a>;</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>        }</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        <a class="code hl_function" href="group___neo_pixel___stripe.html#ga23ae424d3a323c2e315b3f89ba857a84">NeoPixelSetArray</a>(pixel_data);</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span> </div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> == <span class="keyword">false</span> &amp;&amp; <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> &gt;= 2000) { </div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>        <span class="comment">/* Estado: No espira porque TERMINÓ el soplo exitosamente*/</span></div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        <span class="comment">/* Escribo mensaje */</span></div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>        snprintf(<a class="code hl_variable" href="_proyecto_integrador_8c.html#ab871f7def04fe5908be9b8a258b7ce69">msg2</a>, <span class="keyword">sizeof</span>(<a class="code hl_variable" href="_proyecto_integrador_8c.html#ab871f7def04fe5908be9b8a258b7ce69">msg2</a>), <span class="stringliteral">&quot;*MEXITO!\n*&quot;</span>);</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>        enviar_mensaje = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>        <span class="comment">// En lugar de vTaskDelay, usamos el temporizador pasivo</span></div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#adec48076df1dd4c921ab341e9c5a6ebb">tiempo_espera_visual_ms</a> = 1500; </div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> = 0;</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span> </div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> == <span class="keyword">false</span> &amp;&amp; <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> &gt; 0 &amp;&amp; <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> &lt; 2000) { <span class="comment">/* No espira porque CORTÓ ANTES el aire*/</span></div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>        <span class="comment">/* Escribo mensaje */</span></div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>        snprintf(<a class="code hl_variable" href="_proyecto_integrador_8c.html#ab871f7def04fe5908be9b8a258b7ce69">msg2</a>, <span class="keyword">sizeof</span>(<a class="code hl_variable" href="_proyecto_integrador_8c.html#ab871f7def04fe5908be9b8a258b7ce69">msg2</a>), <span class="stringliteral">&quot;*MFALLO! duracion: %.1fs\n*&quot;</span>, <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> / 1000.0f);</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        enviar_mensaje = <span class="keyword">true</span>; </div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span> </div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>        <span class="comment">/*Se ponen en rojo*/</span></div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 12; i++) {</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>            pixel_data[i] = <a class="code hl_define" href="group___neo_pixel___stripe.html#ga2e1dcc1fe1f1ec8488bc4185597108f2">NEOPIXEL_COLOR_RED</a>;</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>        }</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>        <a class="code hl_function" href="group___neo_pixel___stripe.html#ga23ae424d3a323c2e315b3f89ba857a84">NeoPixelSetArray</a>(pixel_data);</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span> </div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>        <span class="comment">// En lugar de vTaskDelay, usamos el temporizador pasivo</span></div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#adec48076df1dd4c921ab341e9c5a6ebb">tiempo_espera_visual_ms</a> = 1500; </div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a> = 0;</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        <a class="code hl_variable" href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>            </div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>    } <span class="keywordflow">else</span> { </div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>        <span class="comment">/* Estado: EN ESPERA. Aún no comenzó el soplo y el tiempo = 0*/</span></div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 12; i++) {</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>            pixel_data[i] = <a class="code hl_define" href="group___neo_pixel___stripe.html#gab21b8bf436d12066d07deef42b83e272">NEOPIXEL_COLOR_WHITE</a>; <span class="comment">/* Para indicar que está listo para comenzar */</span></div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>        }</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>        <a class="code hl_function" href="group___neo_pixel___stripe.html#ga23ae424d3a323c2e315b3f89ba857a84">NeoPixelSetArray</a>(pixel_data);</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    }</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span> </div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    <span class="comment">/* Envío del mensaje */</span></div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>    <span class="keywordflow">if</span> (enviar_mensaje==<span class="keyword">true</span>){</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>        <span class="keywordflow">if</span>(<a class="code hl_function" href="group___b_l_e.html#ga45f64ecb9f703ecc50b85b6967e85bd5">BleStatus</a>() == <a class="code hl_enumvalue" href="group___b_l_e.html#ggab13ed63d3b157b93f1e6d98e3d6a7b47a6622372da21e5c0e32cf5c4445145399">BLE_CONNECTED</a>) {</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>            <a class="code hl_function" href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a>(<a class="code hl_variable" href="_proyecto_integrador_8c.html#ab871f7def04fe5908be9b8a258b7ce69">msg2</a>);</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>        } </div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>    }</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span> </div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>}</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>   </div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span><span class="keyword">static</span> <span class="keywordtype">void</span> Sensado(<span class="keywordtype">void</span> *pvParameters){    </div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span> </div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) { </div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span> </div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a>==<span class="keyword">true</span>) {</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>            </div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>            <span class="keywordtype">float</span> presion_medida = <a class="code hl_function" href="mp3v5050_8h.html#a07d47529cf578a92950cea44924a2d4a">MP3v5050ReadPressure_kPa</a>();</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span> </div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>            <span class="comment">/* 1. Resto la linea base (taramos). Sin soplar sensa 0.86kPa*/</span></div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>            <span class="keywordtype">float</span> presion_neta = presion_medida - 0.86f; <span class="comment">//  restamos el reposo</span></div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>            <span class="keywordflow">if</span> (presion_neta &lt; 0.15f) {</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>                presion_neta = 0.0f; <span class="comment">// Evitamos valores negativos si el sensor fluctúa a 0.83</span></div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>            }</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span> </div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>            <span class="comment">/* 2. Control del NeoPixel según el tipo de expiración */</span></div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="_proyecto_integrador_8c.html#ae997758e8d727f15d209e875112140fa">expiracion_fuerte</a> == <span class="keyword">true</span>){</div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>                ExpiracionFuerte(presion_neta);</div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>                <span class="comment">//Imprimir(NULL);</span></div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>            }</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_variable" href="_proyecto_integrador_8c.html#ac9af8a6963c08faa13012d0b21bd3e98">expiracion_mantenida</a> == <span class="keyword">true</span>){</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>                ExpiracionMantenida(presion_neta);</div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>            }</div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span> </div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>            <span class="comment">// Limpiamos el arreglo a mano</span></div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 12; i++){</div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>                pixel_data[i] = <a class="code hl_define" href="group___neo_pixel___stripe.html#gafd58c227e5df28bb126e2be655e80c01">NEOPIXEL_COLOR_BLACK</a>; <span class="comment">/* Apagamos todos los LEDs */</span></div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>            }</div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>            <a class="code hl_function" href="group___neo_pixel___stripe.html#ga23ae424d3a323c2e315b3f89ba857a84">NeoPixelSetArray</a>(pixel_data);</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>        }</div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span> </div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>        vTaskDelay(<a class="code hl_define" href="_proyecto_integrador_8c.html#a100d5e7d23fcf40d2cac8815c651379f">periodo_muestreo</a> / portTICK_PERIOD_MS);</div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>    }</div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>}</div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span></div>
+<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span><span class="keyword">static</span> <span class="keywordtype">void</span> ControlBle (<span class="keywordtype">void</span> *pvParameters){</div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>    </div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>    <span class="keywordflow">while</span>(1){</div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>        vTaskDelay(500 / portTICK_PERIOD_MS);</div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>        <span class="keywordflow">if</span>(<a class="code hl_function" href="group___b_l_e.html#ga45f64ecb9f703ecc50b85b6967e85bd5">BleStatus</a>() == <a class="code hl_enumvalue" href="group___b_l_e.html#ggab13ed63d3b157b93f1e6d98e3d6a7b47a6622372da21e5c0e32cf5c4445145399">BLE_CONNECTED</a>) {</div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>            <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a00af6b2437d9982f1f125d2cc2537c41">LED_2</a>);</div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>            <a class="code hl_function" href="group___l_e_d.html#ga787ec5815e0eb2680bf1845562731beb">LedToggle</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a11a9adb9054de1fe01d6a6750075f57b">LED_1</a>);</div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>            <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a11a9adb9054de1fe01d6a6750075f57b">LED_1</a>);</div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>            <a class="code hl_function" href="group___l_e_d.html#ga787ec5815e0eb2680bf1845562731beb">LedToggle</a>(<a class="code hl_enumvalue" href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a00af6b2437d9982f1f125d2cc2537c41">LED_2</a>);</div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>        }</div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>        </div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>    }</div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>}</div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span> </div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span><span class="comment">/*==================[external functions definition]==========================*/</span></div>
+<div class="foldopen" id="foldopen00438" data-start="{" data-end="}">
+<div class="line"><a id="l00438" name="l00438"></a><span class="lineno"><a class="line" href="_proyecto_integrador_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">  438</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_proyecto_integrador_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a>(<span class="keywordtype">void</span>){</div>
+<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span> </div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>    <a class="code hl_function" href="mp3v5050_8h.html#a64231e876686774a20fa9dc9b6405c59">MP3v5050Init</a>();</div>
+<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>    <a class="code hl_function" href="group___switch.html#ga8eb2865a73bf2d2b9fd6760958a0cc3c">SwitchesInit</a>();</div>
+<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>    <a class="code hl_function" href="group___l_e_d.html#gacba669c3e8f52e45d1bea50c2e63b250">LedsInit</a>();</div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>    <a class="code hl_function" href="group___neo_pixel___stripe.html#ga1dd960cb0564070aae4f05d455a21942">NeoPixelInit</a>(<a class="code hl_enumvalue" href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393a4f3bac8a4733f9e96aa952fb1d9b0a7f">GPIO_23</a>, 12, pixel_data);</div>
+<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span> </div>
+<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>    <a class="code hl_function" href="group___neo_pixel___stripe.html#ga7eda8ecf6370a5af575af2ca85eafa6d">NeoPixelAllOff</a>(); <span class="comment">/* Aseguramos que los LEDs estén apagados al iniciar el programa */</span></div>
+<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span> </div>
+<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>    <span class="comment">/* Interrupciones por switch*/</span></div>
+<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>    <a class="code hl_function" href="group___switch.html#ga9847b9081e3cb39dd3ec01eaee8323b2">SwitchActivInt</a>(<a class="code hl_enumvalue" href="group___switch.html#gga8caa2df6d25fea5a14eb4533df1d5cfaa24caa46485c5fec2211b3ebd8a1eee77">SWITCH_1</a>, <a class="code hl_function" href="_proyecto_integrador_8c.html#ad2b53aa2eb2f35881780639c89e3b1d1">Tecla1_interrupcion</a>, <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>);</div>
+<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span>    <a class="code hl_function" href="group___switch.html#ga9847b9081e3cb39dd3ec01eaee8323b2">SwitchActivInt</a>(<a class="code hl_enumvalue" href="group___switch.html#gga8caa2df6d25fea5a14eb4533df1d5cfaa73fda67835d5d51aa9251fee781a7434">SWITCH_2</a>, <a class="code hl_function" href="_proyecto_integrador_8c.html#a7f56560c73bcb1c4509ca9fbc6db7555">Tecla2_interrupcion</a>, <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>); </div>
+<div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span> </div>
+<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>    <span class="comment">/* Inicializacion de bluetooth*/</span></div>
+<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>    <a class="code hl_struct" href="structble__config__t.html">ble_config_t</a> ble_config = {</div>
+<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>        .device_name = <span class="stringliteral">&quot;ESP_EDU_Naza&quot;</span>,</div>
+<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>        .func_p = <a class="code hl_function" href="_proyecto_integrador_8c.html#a717ffa64d0d42cac43e95a2ba61e562b">RecibirDatoBluetooth</a></div>
+<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>    };</div>
+<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span> </div>
+<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span>    <a class="code hl_function" href="group___b_l_e.html#ga8001369ce247b2413afd6d8a14fe8d82">BleInit</a>(&amp;ble_config);</div>
+<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span> </div>
+<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>    <span class="comment">/* Inicalización de los uart */</span></div>
+<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>    <a class="code hl_struct" href="structserial__config__t.html">serial_config_t</a> configuracion_uart = {</div>
+<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span>        .port = <a class="code hl_enumvalue" href="group___u_a_r_t.html#gga6e1a445bae87c4cfd26710dbd4657b77af81669fbb473eedf3d1789fcf08d9056">UART_PC</a>, </div>
+<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>        .baud_rate = 115200, </div>
+<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span>        .func_p = <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, </div>
+<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span>        .param_p = <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div>
+<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span>    };</div>
+<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span> </div>
+<div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span>    <a class="code hl_function" href="group___u_a_r_t.html#ga440f6a03dfd8b310f5fdf42c3bf20c42">UartInit</a>(&amp;configuracion_uart);</div>
+<div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span> </div>
+<div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span>    xTaskCreate(&amp;Sensado, <span class="stringliteral">&quot;Sensado&quot;</span>, 2048, <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, 5, &amp;<a class="code hl_variable" href="_proyecto_integrador_8c.html#ab8baacfbcd57dc071bf96da57c11175b">Sensado_task_handle</a>);</div>
+<div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span>    xTaskCreate(&amp;ControlBle, <span class="stringliteral">&quot;Control del bluetooth&quot;</span>, 2048, <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, 5, &amp;<a class="code hl_variable" href="_proyecto_integrador_8c.html#aa26c4b7bc7402d2f931a63a1ca9919e6">ControlBle_task_handle</a>);</div>
+<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span>    </div>
+<div class="line"><a id="l00472" name="l00472"></a><span class="lineno">  472</span>}</div>
+</div>
+<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span><span class="comment">/*==================[end of file]============================================*/</span></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_a100d5e7d23fcf40d2cac8815c651379f"><div class="ttname"><a href="_proyecto_integrador_8c.html#a100d5e7d23fcf40d2cac8815c651379f">periodo_muestreo</a></div><div class="ttdeci">#define periodo_muestreo</div><div class="ttdoc">Periodo de muestreo para la tarea de sensado, definido en ms. Se define como 1000 ms para obtener una...</div><div class="ttdef"><b>Definition</b> <a href="#l00055">ProyectoIntegrador.c:55</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_a2dd2975a46006308d2b1fd19d5a496e2"><div class="ttname"><a href="_proyecto_integrador_8c.html#a2dd2975a46006308d2b1fd19d5a496e2">volumen_relativo_acumulado</a></div><div class="ttdeci">float volumen_relativo_acumulado</div><div class="ttdoc">Variable para acumular el volumen relativo durante la sesión de soplo.</div><div class="ttdef"><b>Definition</b> <a href="#l00092">ProyectoIntegrador.c:92</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_a5422015146780d82ef34e2417c3d41d4"><div class="ttname"><a href="_proyecto_integrador_8c.html#a5422015146780d82ef34e2417c3d41d4">msg1</a></div><div class="ttdeci">char msg1[64]</div><div class="ttdoc">Buffer para mensaje de resultados del modo fuerte.</div><div class="ttdef"><b>Definition</b> <a href="#l00107">ProyectoIntegrador.c:107</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_a630544a7f0a2cc40d8a7fefab7e2fe70"><div class="ttname"><a href="_proyecto_integrador_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a></div><div class="ttdeci">void app_main(void)</div><div class="ttdef"><b>Definition</b> <a href="#l00438">ProyectoIntegrador.c:438</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_a717ffa64d0d42cac43e95a2ba61e562b"><div class="ttname"><a href="_proyecto_integrador_8c.html#a717ffa64d0d42cac43e95a2ba61e562b">RecibirDatoBluetooth</a></div><div class="ttdeci">void RecibirDatoBluetooth(uint8_t *data, uint8_t length)</div><div class="ttdoc">Función callback que se ejecuta cuando llega un dato por Bluetooth.</div><div class="ttdef"><b>Definition</b> <a href="#l00167">ProyectoIntegrador.c:167</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_a7f56560c73bcb1c4509ca9fbc6db7555"><div class="ttname"><a href="_proyecto_integrador_8c.html#a7f56560c73bcb1c4509ca9fbc6db7555">Tecla2_interrupcion</a></div><div class="ttdeci">void Tecla2_interrupcion(void *param)</div><div class="ttdoc">Función que atiende a la Tecla 2, que activa o desactiva la medición de presión y el modo de expiraci...</div><div class="ttdef"><b>Definition</b> <a href="#l00140">ProyectoIntegrador.c:140</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_a8771433b76f3a78fc3fd8e523bd6df5d"><div class="ttname"><a href="_proyecto_integrador_8c.html#a8771433b76f3a78fc3fd8e523bd6df5d">tiempo_espiracion_ms</a></div><div class="ttdeci">uint32_t tiempo_espiracion_ms</div><div class="ttdoc">Variable para almacenar el tiempo de espiración en milisegundos.</div><div class="ttdef"><b>Definition</b> <a href="#l00087">ProyectoIntegrador.c:87</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_a99757d01f4ffa0690648fbb52194580f"><div class="ttname"><a href="_proyecto_integrador_8c.html#a99757d01f4ffa0690648fbb52194580f">presion_maxima</a></div><div class="ttdeci">float presion_maxima</div><div class="ttdoc">Variable para almacenar la presión máxima medida durante la sesión de soplo.</div><div class="ttdef"><b>Definition</b> <a href="#l00082">ProyectoIntegrador.c:82</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_aa26c4b7bc7402d2f931a63a1ca9919e6"><div class="ttname"><a href="_proyecto_integrador_8c.html#aa26c4b7bc7402d2f931a63a1ca9919e6">ControlBle_task_handle</a></div><div class="ttdeci">TaskHandle_t ControlBle_task_handle</div><div class="ttdef"><b>Definition</b> <a href="#l00116">ProyectoIntegrador.c:116</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_ab871f7def04fe5908be9b8a258b7ce69"><div class="ttname"><a href="_proyecto_integrador_8c.html#ab871f7def04fe5908be9b8a258b7ce69">msg2</a></div><div class="ttdeci">char msg2[64]</div><div class="ttdoc">Buffer para mensaje de resultados del modo mantenido.</div><div class="ttdef"><b>Definition</b> <a href="#l00112">ProyectoIntegrador.c:112</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_ab8baacfbcd57dc071bf96da57c11175b"><div class="ttname"><a href="_proyecto_integrador_8c.html#ab8baacfbcd57dc071bf96da57c11175b">Sensado_task_handle</a></div><div class="ttdeci">TaskHandle_t Sensado_task_handle</div><div class="ttdef"><b>Definition</b> <a href="#l00115">ProyectoIntegrador.c:115</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_ac9af8a6963c08faa13012d0b21bd3e98"><div class="ttname"><a href="_proyecto_integrador_8c.html#ac9af8a6963c08faa13012d0b21bd3e98">expiracion_mantenida</a></div><div class="ttdeci">bool expiracion_mantenida</div><div class="ttdoc">Variable booleana que indica el tipo de expiración a medir.</div><div class="ttdef"><b>Definition</b> <a href="#l00071">ProyectoIntegrador.c:71</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_aca62aa99037ec0b9bb1c3acaaa7a673a"><div class="ttname"><a href="_proyecto_integrador_8c.html#aca62aa99037ec0b9bb1c3acaaa7a673a">soplando</a></div><div class="ttdeci">bool soplando</div><div class="ttdoc">Variable booleana para indicar si el paciente está soplando o no.</div><div class="ttdef"><b>Definition</b> <a href="#l00097">ProyectoIntegrador.c:97</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_acba3bd2f9d5cb73c34ac6276904b36c2"><div class="ttname"><a href="_proyecto_integrador_8c.html#acba3bd2f9d5cb73c34ac6276904b36c2">medir_presion</a></div><div class="ttdeci">bool medir_presion</div><div class="ttdoc">Variable booleana que cambia de estado según se presione o no la tecla. Controla el inicio o no de la...</div><div class="ttdef"><b>Definition</b> <a href="#l00061">ProyectoIntegrador.c:61</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_ad2b53aa2eb2f35881780639c89e3b1d1"><div class="ttname"><a href="_proyecto_integrador_8c.html#ad2b53aa2eb2f35881780639c89e3b1d1">Tecla1_interrupcion</a></div><div class="ttdeci">void Tecla1_interrupcion(void *param)</div><div class="ttdoc">Función que atiende a la Tecla 1, que activa o desactiva la medición de presión y el modo de expiraci...</div><div class="ttdef"><b>Definition</b> <a href="#l00124">ProyectoIntegrador.c:124</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_adec48076df1dd4c921ab341e9c5a6ebb"><div class="ttname"><a href="_proyecto_integrador_8c.html#adec48076df1dd4c921ab341e9c5a6ebb">tiempo_espera_visual_ms</a></div><div class="ttdeci">uint32_t tiempo_espera_visual_ms</div><div class="ttdoc">Controla cuánto tiempo se muestran el rojo/verde.</div><div class="ttdef"><b>Definition</b> <a href="#l00102">ProyectoIntegrador.c:102</a></div></div>
+<div class="ttc" id="a_proyecto_integrador_8c_html_ae997758e8d727f15d209e875112140fa"><div class="ttname"><a href="_proyecto_integrador_8c.html#ae997758e8d727f15d209e875112140fa">expiracion_fuerte</a></div><div class="ttdeci">bool expiracion_fuerte</div><div class="ttdoc">Variable booleana que indica el tipo de expiración a medir.</div><div class="ttdef"><b>Definition</b> <a href="#l00066">ProyectoIntegrador.c:66</a></div></div>
+<div class="ttc" id="aanalog__io__mcu_8h_html"><div class="ttname"><a href="analog__io__mcu_8h.html">analog_io_mcu.h</a></div></div>
+<div class="ttc" id="able__mcu_8h_html"><div class="ttname"><a href="ble__mcu_8h.html">ble_mcu.h</a></div></div>
+<div class="ttc" id="agroup___b_l_e_html_ga45f64ecb9f703ecc50b85b6967e85bd5"><div class="ttname"><a href="group___b_l_e.html#ga45f64ecb9f703ecc50b85b6967e85bd5">BleStatus</a></div><div class="ttdeci">ble_status_t BleStatus(void)</div><div class="ttdoc">Gets BLE connection status.</div><div class="ttdef"><b>Definition</b> <a href="ble__mcu_8c_source.html#l00530">ble_mcu.c:530</a></div></div>
+<div class="ttc" id="agroup___b_l_e_html_ga68083cec5599456e78a536031e3b61b8"><div class="ttname"><a href="group___b_l_e.html#ga68083cec5599456e78a536031e3b61b8">BleSendString</a></div><div class="ttdeci">void BleSendString(const char *msg)</div><div class="ttdoc">Send a string trough BLE (if connected).</div><div class="ttdef"><b>Definition</b> <a href="ble__mcu_8c_source.html#l00544">ble_mcu.c:544</a></div></div>
+<div class="ttc" id="agroup___b_l_e_html_ga8001369ce247b2413afd6d8a14fe8d82"><div class="ttname"><a href="group___b_l_e.html#ga8001369ce247b2413afd6d8a14fe8d82">BleInit</a></div><div class="ttdeci">void BleInit(ble_config_t *ble_device)</div><div class="ttdoc">Bluetooth initialization.</div><div class="ttdef"><b>Definition</b> <a href="ble__mcu_8c_source.html#l00452">ble_mcu.c:452</a></div></div>
+<div class="ttc" id="agroup___b_l_e_html_ggab13ed63d3b157b93f1e6d98e3d6a7b47a6622372da21e5c0e32cf5c4445145399"><div class="ttname"><a href="group___b_l_e.html#ggab13ed63d3b157b93f1e6d98e3d6a7b47a6622372da21e5c0e32cf5c4445145399">BLE_CONNECTED</a></div><div class="ttdeci">@ BLE_CONNECTED</div><div class="ttdef"><b>Definition</b> <a href="ble__hid__mcu_8h_source.html#l00039">ble_hid_mcu.h:39</a></div></div>
+<div class="ttc" id="agroup___g_i_o_p_html_ggaf65604147d0244c9b13cfdc865ad5393a4f3bac8a4733f9e96aa952fb1d9b0a7f"><div class="ttname"><a href="group___g_i_o_p.html#ggaf65604147d0244c9b13cfdc865ad5393a4f3bac8a4733f9e96aa952fb1d9b0a7f">GPIO_23</a></div><div class="ttdeci">@ GPIO_23</div><div class="ttdef"><b>Definition</b> <a href="gpio__mcu_8h_source.html#l00075">gpio_mcu.h:75</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ga4fd07c9f7fab15d0d07389a38f4a39d8"><div class="ttname"><a href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a></div><div class="ttdeci">uint8_t LedOff(led_t led)</div><div class="ttdoc">Turn off a specific LED APAGO EL LED.</div><div class="ttdef"><b>Definition</b> <a href="led_8c_source.html#l00065">led.c:65</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ga787ec5815e0eb2680bf1845562731beb"><div class="ttname"><a href="group___l_e_d.html#ga787ec5815e0eb2680bf1845562731beb">LedToggle</a></div><div class="ttdeci">uint8_t LedToggle(led_t led)</div><div class="ttdoc">Invert a specific LED state INVIERTO EL ESTADO DEL LED.</div><div class="ttdef"><b>Definition</b> <a href="led_8c_source.html#l00084">led.c:84</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_gacba669c3e8f52e45d1bea50c2e63b250"><div class="ttname"><a href="group___l_e_d.html#gacba669c3e8f52e45d1bea50c2e63b250">LedsInit</a></div><div class="ttdeci">uint8_t LedsInit(void)</div><div class="ttdoc">ESP-EDU LEDs initialization INICIALIZO EL LED.</div><div class="ttdef"><b>Definition</b> <a href="led_8c_source.html#l00031">led.c:31</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ggab6831a7d06c0a2bc69f9b024f6445a80a00af6b2437d9982f1f125d2cc2537c41"><div class="ttname"><a href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a00af6b2437d9982f1f125d2cc2537c41">LED_2</a></div><div class="ttdeci">@ LED_2</div><div class="ttdef"><b>Definition</b> <a href="led_8h_source.html#l00033">led.h:33</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ggab6831a7d06c0a2bc69f9b024f6445a80a11a9adb9054de1fe01d6a6750075f57b"><div class="ttname"><a href="group___l_e_d.html#ggab6831a7d06c0a2bc69f9b024f6445a80a11a9adb9054de1fe01d6a6750075f57b">LED_1</a></div><div class="ttdeci">@ LED_1</div><div class="ttdef"><b>Definition</b> <a href="led_8h_source.html#l00034">led.h:34</a></div></div>
+<div class="ttc" id="agroup___neo_pixel___stripe_html_ga0b34bb5f5ac15880f7ee287053559470"><div class="ttname"><a href="group___neo_pixel___stripe.html#ga0b34bb5f5ac15880f7ee287053559470">NEOPIXEL_COLOR_BLUE</a></div><div class="ttdeci">#define NEOPIXEL_COLOR_BLUE</div><div class="ttdef"><b>Definition</b> <a href="neopixel__stripe_8h_source.html#l00045">neopixel_stripe.h:45</a></div></div>
+<div class="ttc" id="agroup___neo_pixel___stripe_html_ga1c1707be8a267a4d1f32640ff25a38f5"><div class="ttname"><a href="group___neo_pixel___stripe.html#ga1c1707be8a267a4d1f32640ff25a38f5">NEOPIXEL_COLOR_VIOLET</a></div><div class="ttdeci">#define NEOPIXEL_COLOR_VIOLET</div><div class="ttdef"><b>Definition</b> <a href="neopixel__stripe_8h_source.html#l00046">neopixel_stripe.h:46</a></div></div>
+<div class="ttc" id="agroup___neo_pixel___stripe_html_ga1dd960cb0564070aae4f05d455a21942"><div class="ttname"><a href="group___neo_pixel___stripe.html#ga1dd960cb0564070aae4f05d455a21942">NeoPixelInit</a></div><div class="ttdeci">void NeoPixelInit(gpio_t pin, uint16_t len, neopixel_color_t *color_array)</div><div class="ttdoc">NeoPixel array initialization.</div><div class="ttdef"><b>Definition</b> <a href="neopixel__stripe_8c_source.html#l00038">neopixel_stripe.c:38</a></div></div>
+<div class="ttc" id="agroup___neo_pixel___stripe_html_ga23ae424d3a323c2e315b3f89ba857a84"><div class="ttname"><a href="group___neo_pixel___stripe.html#ga23ae424d3a323c2e315b3f89ba857a84">NeoPixelSetArray</a></div><div class="ttdeci">void NeoPixelSetArray(neopixel_color_t *color_array)</div><div class="ttdoc">Set all NeoPixels in the array with the color stored in an array.</div><div class="ttdef"><b>Definition</b> <a href="neopixel__stripe_8c_source.html#l00070">neopixel_stripe.c:70</a></div></div>
+<div class="ttc" id="agroup___neo_pixel___stripe_html_ga2e1dcc1fe1f1ec8488bc4185597108f2"><div class="ttname"><a href="group___neo_pixel___stripe.html#ga2e1dcc1fe1f1ec8488bc4185597108f2">NEOPIXEL_COLOR_RED</a></div><div class="ttdeci">#define NEOPIXEL_COLOR_RED</div><div class="ttdef"><b>Definition</b> <a href="neopixel__stripe_8h_source.html#l00037">neopixel_stripe.h:37</a></div></div>
+<div class="ttc" id="agroup___neo_pixel___stripe_html_ga46c58082e9d85e6503e36f0e2306bb39"><div class="ttname"><a href="group___neo_pixel___stripe.html#ga46c58082e9d85e6503e36f0e2306bb39">neopixel_color_t</a></div><div class="ttdeci">uint32_t neopixel_color_t</div><div class="ttdoc">24 bits color</div><div class="ttdef"><b>Definition</b> <a href="neopixel__stripe_8h_source.html#l00073">neopixel_stripe.h:73</a></div></div>
+<div class="ttc" id="agroup___neo_pixel___stripe_html_ga6eac59a3417616eea96c26c43823fbc6"><div class="ttname"><a href="group___neo_pixel___stripe.html#ga6eac59a3417616eea96c26c43823fbc6">NEOPIXEL_COLOR_ROSE</a></div><div class="ttdeci">#define NEOPIXEL_COLOR_ROSE</div><div class="ttdef"><b>Definition</b> <a href="neopixel__stripe_8h_source.html#l00048">neopixel_stripe.h:48</a></div></div>
+<div class="ttc" id="agroup___neo_pixel___stripe_html_ga7eda8ecf6370a5af575af2ca85eafa6d"><div class="ttname"><a href="group___neo_pixel___stripe.html#ga7eda8ecf6370a5af575af2ca85eafa6d">NeoPixelAllOff</a></div><div class="ttdeci">void NeoPixelAllOff(void)</div><div class="ttdoc">Turn off all NeoPixels.</div><div class="ttdef"><b>Definition</b> <a href="neopixel__stripe_8c_source.html#l00044">neopixel_stripe.c:44</a></div></div>
+<div class="ttc" id="agroup___neo_pixel___stripe_html_ga94c4bcd376cbef7becd93531c1031df6"><div class="ttname"><a href="group___neo_pixel___stripe.html#ga94c4bcd376cbef7becd93531c1031df6">NEOPIXEL_COLOR_YELLOW</a></div><div class="ttdeci">#define NEOPIXEL_COLOR_YELLOW</div><div class="ttdef"><b>Definition</b> <a href="neopixel__stripe_8h_source.html#l00039">neopixel_stripe.h:39</a></div></div>
+<div class="ttc" id="agroup___neo_pixel___stripe_html_gab21b8bf436d12066d07deef42b83e272"><div class="ttname"><a href="group___neo_pixel___stripe.html#gab21b8bf436d12066d07deef42b83e272">NEOPIXEL_COLOR_WHITE</a></div><div class="ttdeci">#define NEOPIXEL_COLOR_WHITE</div><div class="ttdef"><b>Definition</b> <a href="neopixel__stripe_8h_source.html#l00036">neopixel_stripe.h:36</a></div></div>
+<div class="ttc" id="agroup___neo_pixel___stripe_html_gac8188c114d2342b3ca60466df01c7111"><div class="ttname"><a href="group___neo_pixel___stripe.html#gac8188c114d2342b3ca60466df01c7111">NEOPIXEL_COLOR_GREEN</a></div><div class="ttdeci">#define NEOPIXEL_COLOR_GREEN</div><div class="ttdef"><b>Definition</b> <a href="neopixel__stripe_8h_source.html#l00041">neopixel_stripe.h:41</a></div></div>
+<div class="ttc" id="agroup___neo_pixel___stripe_html_gafd58c227e5df28bb126e2be655e80c01"><div class="ttname"><a href="group___neo_pixel___stripe.html#gafd58c227e5df28bb126e2be655e80c01">NEOPIXEL_COLOR_BLACK</a></div><div class="ttdeci">#define NEOPIXEL_COLOR_BLACK</div><div class="ttdef"><b>Definition</b> <a href="neopixel__stripe_8h_source.html#l00063">neopixel_stripe.h:63</a></div></div>
+<div class="ttc" id="agroup___switch_html_ga8eb2865a73bf2d2b9fd6760958a0cc3c"><div class="ttname"><a href="group___switch.html#ga8eb2865a73bf2d2b9fd6760958a0cc3c">SwitchesInit</a></div><div class="ttdeci">int8_t SwitchesInit(void)</div><div class="ttdoc">ESP-EDU switches initialization INICIALIZA LOS SWITCHES.</div><div class="ttdef"><b>Definition</b> <a href="switch_8c_source.html#l00029">switch.c:29</a></div></div>
+<div class="ttc" id="agroup___switch_html_ga9847b9081e3cb39dd3ec01eaee8323b2"><div class="ttname"><a href="group___switch.html#ga9847b9081e3cb39dd3ec01eaee8323b2">SwitchActivInt</a></div><div class="ttdeci">void SwitchActivInt(switch_t tec, void *ptrIntFunc, void *args)</div><div class="ttdoc">Enables the interruption of a particular key and assigns a callback function.</div><div class="ttdef"><b>Definition</b> <a href="switch_8c_source.html#l00047">switch.c:47</a></div></div>
+<div class="ttc" id="agroup___switch_html_gga8caa2df6d25fea5a14eb4533df1d5cfaa24caa46485c5fec2211b3ebd8a1eee77"><div class="ttname"><a href="group___switch.html#gga8caa2df6d25fea5a14eb4533df1d5cfaa24caa46485c5fec2211b3ebd8a1eee77">SWITCH_1</a></div><div class="ttdeci">@ SWITCH_1</div><div class="ttdef"><b>Definition</b> <a href="switch_8h_source.html#l00032">switch.h:32</a></div></div>
+<div class="ttc" id="agroup___switch_html_gga8caa2df6d25fea5a14eb4533df1d5cfaa73fda67835d5d51aa9251fee781a7434"><div class="ttname"><a href="group___switch.html#gga8caa2df6d25fea5a14eb4533df1d5cfaa73fda67835d5d51aa9251fee781a7434">SWITCH_2</a></div><div class="ttdeci">@ SWITCH_2</div><div class="ttdef"><b>Definition</b> <a href="switch_8h_source.html#l00033">switch.h:33</a></div></div>
+<div class="ttc" id="agroup___u_a_r_t_html_ga440f6a03dfd8b310f5fdf42c3bf20c42"><div class="ttname"><a href="group___u_a_r_t.html#ga440f6a03dfd8b310f5fdf42c3bf20c42">UartInit</a></div><div class="ttdeci">void UartInit(serial_config_t *port_config)</div><div class="ttdoc">Serial port initialization.</div><div class="ttdef"><b>Definition</b> <a href="uart__mcu_8c_source.html#l00107">uart_mcu.c:107</a></div></div>
+<div class="ttc" id="agroup___u_a_r_t_html_gga6e1a445bae87c4cfd26710dbd4657b77af81669fbb473eedf3d1789fcf08d9056"><div class="ttname"><a href="group___u_a_r_t.html#gga6e1a445bae87c4cfd26710dbd4657b77af81669fbb473eedf3d1789fcf08d9056">UART_PC</a></div><div class="ttdeci">@ UART_PC</div><div class="ttdef"><b>Definition</b> <a href="uart__mcu_8h_source.html#l00032">uart_mcu.h:32</a></div></div>
+<div class="ttc" id="aili9341_8c_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition</b> <a href="ili9341_8c_source.html#l00019">ili9341.c:19</a></div></div>
+<div class="ttc" id="aled_8h_html"><div class="ttname"><a href="led_8h.html">led.h</a></div></div>
+<div class="ttc" id="amp3v5050_8h_html"><div class="ttname"><a href="mp3v5050_8h.html">mp3v5050.h</a></div></div>
+<div class="ttc" id="amp3v5050_8h_html_a07d47529cf578a92950cea44924a2d4a"><div class="ttname"><a href="mp3v5050_8h.html#a07d47529cf578a92950cea44924a2d4a">MP3v5050ReadPressure_kPa</a></div><div class="ttdeci">float MP3v5050ReadPressure_kPa(void)</div><div class="ttdoc">Lee la presión diferencial medida por el sensor MP3V5050.</div><div class="ttdef"><b>Definition</b> <a href="mp3v5050_8c_source.html#l00047">mp3v5050.c:47</a></div></div>
+<div class="ttc" id="amp3v5050_8h_html_a64231e876686774a20fa9dc9b6405c59"><div class="ttname"><a href="mp3v5050_8h.html#a64231e876686774a20fa9dc9b6405c59">MP3v5050Init</a></div><div class="ttdeci">bool MP3v5050Init(void)</div><div class="ttdoc">Inicializa el sensor MP3V5050.</div><div class="ttdef"><b>Definition</b> <a href="mp3v5050_8c_source.html#l00034">mp3v5050.c:34</a></div></div>
+<div class="ttc" id="aneopixel__stripe_8h_html"><div class="ttname"><a href="neopixel__stripe_8h.html">neopixel_stripe.h</a></div></div>
+<div class="ttc" id="astructble__config__t_html"><div class="ttname"><a href="structble__config__t.html">ble_config_t</a></div><div class="ttdoc">BLE configuration struct.</div><div class="ttdef"><b>Definition</b> <a href="ble__mcu_8h_source.html#l00043">ble_mcu.h:43</a></div></div>
+<div class="ttc" id="astructserial__config__t_html"><div class="ttname"><a href="structserial__config__t.html">serial_config_t</a></div><div class="ttdoc">Serial port configuration struct.</div><div class="ttdef"><b>Definition</b> <a href="uart__mcu_8h_source.html#l00038">uart_mcu.h:38</a></div></div>
+<div class="ttc" id="aswitch_8h_html"><div class="ttname"><a href="switch_8h.html">switch.h</a></div></div>
+<div class="ttc" id="atimer__mcu_8h_html"><div class="ttname"><a href="timer__mcu_8h.html">timer_mcu.h</a></div></div>
+<div class="ttc" id="auart__mcu_8h_html"><div class="ttname"><a href="uart__mcu_8h.html">uart_mcu.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html">firmware</a></li><li class="navelem"><a href="dir_429d80758da54da73083af4edd40d0b3.html">projects</a></li><li class="navelem"><a href="dir_49cab978dd6222f95fec48dd18bcb29c.html">ProyectoFinal</a></li><li class="navelem"><a href="dir_0cd45db885baac9c0efb66acd875c4ba.html">main</a></li><li class="navelem"><a href="_proyecto_integrador_8c.html">ProyectoIntegrador.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>
