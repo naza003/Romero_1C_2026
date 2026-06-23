@@ -112,6 +112,7 @@
             "mpu6050.h": "c",
             "i2c_mcu.h": "c"
         },
+        "powershell.cwd": "ProyectoFinal",
     },
     "tasks": {
         "version": "2.0.0",

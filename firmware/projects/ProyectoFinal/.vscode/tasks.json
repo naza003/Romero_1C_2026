@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start OpenOCD",
+      "type": "shell",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"${workspaceFolder}\\.vscode\\start_openocd.ps1\"",
+      "presentation": { "panel": "dedicated", "echo": true, "reveal": "always", "focus": false },
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}

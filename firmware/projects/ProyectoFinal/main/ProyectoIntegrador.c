@@ -44,6 +44,7 @@
 #include <mp3v5050.h>
 #include <switch.h>
 #include <ble_mcu.h>
+#include <led.h>
 
 /*==================[macros and definitions]=================================*/
 
@@ -95,13 +96,24 @@ float volumen_relativo_acumulado = 0.0f;
  */
 bool soplando = false; 
 
-char msginicio1[64]; /* Buffer para mensaje de inicio del modo fuerte */
-char msginicio2[64]; /* Buffer para mensaje de inicio del modo mantenido */
-char msg1[64]; /* Buffer para mensaje de resultados del modo fuerte */
-char msg2[64]; /* Buffer para mensaje de resultados del modo mantenido */
+/**
+ * @brief Controla cuánto tiempo se muestran el rojo/verde
+ */
+uint32_t tiempo_espera_visual_ms = 0;    
+
+/**
+ * @brief Buffer para mensaje de resultados del modo fuerte
+ */
+char msg1[64]; 
+
+/**
+ * @brief Buffer para mensaje de resultados del modo mantenido
+ */
+char msg2[64]; 
 
 /*==================[internal data definition]===============================*/
 TaskHandle_t Sensado_task_handle = NULL;
+TaskHandle_t ControlBle_task_handle = NULL;
 
 /*==================[internal functions declaration]================================*/
 
@@ -111,15 +123,8 @@ TaskHandle_t Sensado_task_handle = NULL;
  */
 void Tecla1_interrupcion (void* param){
     medir_presion = !medir_presion;   /* Cambia el estado de medir_presion */
-    expiracion_fuerte = !expiracion_fuerte;
+    expiracion_fuerte = medir_presion;
     expiracion_mantenida = false; /* Solo puede estar activo un modo a la vez */ 
-
-//    snprintf(msginicio1, sizeof(msginicio1), "Inicio Modo Espiracion Fuerte\r\n");
-//        if (BleStatus() == BLE_CONNECTED) {
-//           BleSendString(msg1);
-//        } else {    
-//            UartSendString(UART_PC, msg1);   // por si no conecta ble
-//        }
 
     // Reseteo variables globales de terapia por seguridad
     soplando = false;
@@ -134,18 +139,11 @@ void Tecla1_interrupcion (void* param){
  */
 void Tecla2_interrupcion (void* param){
     medir_presion = !medir_presion;   /* Cambia el estado de medir_presion */
-    expiracion_mantenida = !expiracion_mantenida;
+    expiracion_mantenida = medir_presion;
     expiracion_fuerte = false; /* Solo puede estar activo un modo a la vez */
     
     tiempo_espiracion_ms = 0; // Reinicio el reloj por las dudas
-
-//    snprintf(msginicio2, sizeof(msginicio2), "Inicio Modo Espiracion Mantenida\r\n");
-//        if (BleStatus() == BLE_CONNECTED) {
-//           BleSendString(msg1);
-//        } else {    
-//            UartSendString(UART_PC, msg1);   // por si no conecta ble
-//        }
-
+    soplando = false; 
         
     // Se ACTIVA el modo, todos los leds se prenden 
     if (expiracion_mantenida == true) {
@@ -161,6 +159,47 @@ void Tecla2_interrupcion (void* param){
         NeoPixelSetArray(pixel_data); 
     }
     
+}
+
+/**
+ * @brief Función callback que se ejecuta cuando llega un dato por Bluetooth
+ */
+void RecibirDatoBluetooth(uint8_t *data, uint8_t length) {
+    // Tomamos el primer caracter del dato recibido
+    char comando = (char)data[0];
+
+    if (comando == 'f') {
+        // --- EQUIVALENTE A PRESIONAR SWITCH 1 (Modo Fuerte) ---
+        medir_presion = !medir_presion;   
+        expiracion_fuerte = medir_presion;
+        expiracion_mantenida = false; 
+
+        soplando = false;
+        tiempo_espiracion_ms = 0;
+        volumen_relativo_acumulado = 0.0f;
+        presion_maxima = 0.0f;
+    } 
+    else if (comando == 'm') {
+        // --- EQUIVALENTE A PRESIONAR SWITCH 2 (Modo Mantenido) ---
+        medir_presion = !medir_presion;   
+        expiracion_mantenida = medir_presion;
+        expiracion_fuerte = false; 
+        
+        tiempo_espiracion_ms = 0; 
+        soplando = false;
+            
+        if (expiracion_mantenida == true) {
+            for(int i = 0; i < 12; i++){
+                pixel_data[i] = NEOPIXEL_COLOR_WHITE; 
+            }
+            NeoPixelSetArray(pixel_data); 
+        } else {
+            for(int i = 0; i < 12; i++){
+                pixel_data[i] = NEOPIXEL_COLOR_BLACK; 
+            }
+            NeoPixelSetArray(pixel_data); 
+        }
+    }
 }
 
 /** @fn static void ExpiracionFuerte(float presion_neta_kPa_1)
@@ -191,7 +230,7 @@ static void ExpiracionFuerte(float presion_neta_kPa_1){
                 pixel_data[i] = NEOPIXEL_COLOR_YELLOW; /* LEDs 4, 5, 6 --> AMARILLOS */
            } else if (i<9) {
                 pixel_data[i] = NEOPIXEL_COLOR_BLUE; /* LEDs 7, 8, 9 --> AZULES */
-           } else if (i<12) {
+           }    else if (i<12) {
                 pixel_data[i] = NEOPIXEL_COLOR_VIOLET; /* LEDs 10, 11, 12 --> VIOLETAS */
            } 
 
@@ -223,15 +262,13 @@ static void ExpiracionFuerte(float presion_neta_kPa_1){
         // EL PACIENTE ACABA DE TERMINAR EL SOPLIDO (Flanco de bajada)
         float tiempo_soplado_segundos = tiempo_espiracion_ms / 1000.0f;
 
-    /* 4. MOSTRAMOS LOS RESULTADOS */
-        snprintf(msg1, sizeof(msg1), "*FIN! Maximo:%.2f kPa | Duracion:%.1f s | VolumenRelatvo:%.2f\r\n*", 
-                presion_maxima, tiempo_soplado_segundos, volumen_relativo_acumulado); 
+        /* 4. MOSTRAMOS LOS RESULTADOS */
+        snprintf(msg1, sizeof(msg1), "*KMax:%.2f kPa | Dur:%.1f s | VolumenRelatvo:%.2f\n*", 
+                presion_maxima, tiempo_soplado_segundos, volumen_relativo_acumulado);
 
         if (BleStatus() == BLE_CONNECTED) {
             BleSendString(msg1);
-        } else {    
-            UartSendString(UART_PC, msg1);   // por si no conecta ble
-        }
+        } 
 
         // RESETEAMOS TODO para el siguiente soplido
         soplando = false;
@@ -239,10 +276,6 @@ static void ExpiracionFuerte(float presion_neta_kPa_1){
         volumen_relativo_acumulado = 0.0f;
         presion_maxima = 0.0f;
     }    
-
-// snprintf(uart_msg, sizeof(uart_msg), ">presión: %.2f\r\n", presion_medida);  // Envía el dato en el formato esperado por el graficador serie
-// UartSendString(UART_PC, uart_msg);   // Envía el mensaje por UART al puerto serie de la PC
-
 }
 
 /** @fn static void ExpiracionMantenida(float presion_neta_kPa_2)
@@ -256,18 +289,28 @@ static void ExpiracionMantenida(float presion_neta_kPa_2){
 
     bool enviar_mensaje = false; 
 
+    // Si el temporizador visual está corriendo, mantenemos el color final y descontamos tiempo
+    if (tiempo_espera_visual_ms > 0) {
+        if (tiempo_espera_visual_ms >= periodo_muestreo) {
+            tiempo_espera_visual_ms -= periodo_muestreo;
+        } else {
+            tiempo_espera_visual_ms = 0;
+        }
+        return; // Salimos de la función para mantener el color en el NeoPixel sin recalcular
+    }
+
     /* El paciente está espirando?*/
     if (presion_neta_kPa_2 > 0.0f) {
         soplando = true;
     } else soplando = false;
 
     /* Controlo el neopixel*/
-    if(soplando == true && tiempo_espiracion_ms < 4000){
+    if(soplando == true && tiempo_espiracion_ms < 2000){
         /* Estado: ARRANCA LA CUENTA REGRESIVA */
         tiempo_espiracion_ms += periodo_muestreo; /* Cronómetro: le sumo los 50ms de este ciclo */
 
         /*Calculo cuantos leds apagar por segundo (3 cada 1000ms)*/
-        int leds_a_apagar = (tiempo_espiracion_ms *12) / 4000;
+        int leds_a_apagar = (tiempo_espiracion_ms *12) / 2000;
         int leds_encendidos = 12 - leds_a_apagar;
 
         for (int i = 0; i < 12; i++){
@@ -279,7 +322,7 @@ static void ExpiracionMantenida(float presion_neta_kPa_2){
         }
         NeoPixelSetArray(pixel_data);
     
-    } else if (soplando == true && tiempo_espiracion_ms >= 4000) {   
+    } else if (soplando == true && tiempo_espiracion_ms >= 2000) {   
         /* Estado: TIEMPO COMPLETADO. El paciente sigue espirando*/
         /*Se ponen en verde*/
         for (int i = 0; i < 12; i++) {
@@ -287,27 +330,37 @@ static void ExpiracionMantenida(float presion_neta_kPa_2){
         }
         NeoPixelSetArray(pixel_data);
 
-    } else if (soplando == false && tiempo_espiracion_ms >= 4000) { 
+    } else if (soplando == false && tiempo_espiracion_ms >= 2000) { 
         /* Estado: No espira porque TERMINÓ el soplo exitosamente*/
         /* Escribo mensaje */
-        snprintf(msg2, sizeof(msg2), "*EXITO! 4 Segundos Completados!*\r\n");
-        enviar_mensaje = true; 
-
-    } else if (soplando == false && tiempo_espiracion_ms > 0 && tiempo_espiracion_ms < 4000) { /* No espira porque CORTÓ ANTES el aire*/
-        /* Escribo mensaje */
-        snprintf(msg2, sizeof(msg2), "*FALLO! Solo duro:%.1f s*\r\n", tiempo_espiracion_ms / 1000.0f);
+        snprintf(msg2, sizeof(msg2), "*MEXITO!\n*");
         enviar_mensaje = true;
+
+        // En lugar de vTaskDelay, usamos el temporizador pasivo
+        tiempo_espera_visual_ms = 1500; 
+        tiempo_espiracion_ms = 0;
+        soplando = false;
+
+    } else if (soplando == false && tiempo_espiracion_ms > 0 && tiempo_espiracion_ms < 2000) { /* No espira porque CORTÓ ANTES el aire*/
+        /* Escribo mensaje */
+        snprintf(msg2, sizeof(msg2), "*MFALLO! duracion: %.1fs\n*", tiempo_espiracion_ms / 1000.0f);
+        enviar_mensaje = true; 
 
         /*Se ponen en rojo*/
         for (int i = 0; i < 12; i++) {
             pixel_data[i] = NEOPIXEL_COLOR_RED;
         }
         NeoPixelSetArray(pixel_data);
+
+        // En lugar de vTaskDelay, usamos el temporizador pasivo
+        tiempo_espera_visual_ms = 1500; 
+        tiempo_espiracion_ms = 0;
+        soplando = false;
             
     } else { 
         /* Estado: EN ESPERA. Aún no comenzó el soplo y el tiempo = 0*/
         for (int i = 0; i < 12; i++) {
-        pixel_data[i] = NEOPIXEL_COLOR_WHITE; /* Para indicar que está listo para comenzar */
+            pixel_data[i] = NEOPIXEL_COLOR_WHITE; /* Para indicar que está listo para comenzar */
         }
         NeoPixelSetArray(pixel_data);
     }
@@ -316,12 +369,7 @@ static void ExpiracionMantenida(float presion_neta_kPa_2){
     if (enviar_mensaje==true){
         if(BleStatus() == BLE_CONNECTED) {
             BleSendString(msg2);
-        } else UartSendString(UART_PC, msg2);   // por si no conecta ble
-    
-    /* Pausa y reseteo */
-    vTaskDelay(1500 / portTICK_PERIOD_MS); 
-    tiempo_espiracion_ms = 0; 
-
+        } 
     }
 
 }
@@ -342,13 +390,14 @@ static void Sensado(void *pvParameters){
 
             /* 1. Resto la linea base (taramos). Sin soplar sensa 0.86kPa*/
             float presion_neta = presion_medida - 0.86f; //  restamos el reposo
-            if (presion_neta < 0.5f) {
+            if (presion_neta < 0.15f) {
                 presion_neta = 0.0f; // Evitamos valores negativos si el sensor fluctúa a 0.83
             }
 
             /* 2. Control del NeoPixel según el tipo de expiración */
             if (expiracion_fuerte == true){
                 ExpiracionFuerte(presion_neta);
+                //Imprimir(NULL);
             }
             else if (expiracion_mantenida == true){
                 ExpiracionMantenida(presion_neta);
@@ -366,12 +415,31 @@ static void Sensado(void *pvParameters){
     }
 }
 
+/** @fn static void ControlBle (void *pvParameters)
+ * @brief Funcion que controla si el bluetooth de la placa está conectado al del celular
+ * @param[in] pvParameters puntero a void que se pasa a la función al crear la tarea, no se utiliza en este caso.
+ */
+static void ControlBle (void *pvParameters){
+    
+    while(1){
+        vTaskDelay(500 / portTICK_PERIOD_MS);
+        if(BleStatus() == BLE_CONNECTED) {
+            LedOff(LED_2);
+            LedToggle(LED_1);
+        } else {
+            LedOff(LED_1);
+            LedToggle(LED_2);
+        }
+        
+    }
+}
+
 /*==================[external functions definition]==========================*/
 void app_main(void){
-	printf("Hello world!\n");
 
 	MP3v5050Init();
 	SwitchesInit();
+    LedsInit();
 	NeoPixelInit(GPIO_23, 12, pixel_data);
 
     NeoPixelAllOff(); /* Aseguramos que los LEDs estén apagados al iniciar el programa */
@@ -382,8 +450,8 @@ void app_main(void){
 
     /* Inicializacion de bluetooth*/
     ble_config_t ble_config = {
-    .device_name = "ESP_EDU_Naza",
-    .func_p = NULL
+        .device_name = "ESP_EDU_Naza",
+        .func_p = RecibirDatoBluetooth
 	};
 
 	BleInit(&ble_config);
@@ -399,6 +467,7 @@ void app_main(void){
     UartInit(&configuracion_uart);
 
 	xTaskCreate(&Sensado, "Sensado", 2048, NULL, 5, &Sensado_task_handle);
+    xTaskCreate(&ControlBle, "Control del bluetooth", 2048, NULL, 5, &ControlBle_task_handle);
     
 }
 /*==================[end of file]============================================*/
